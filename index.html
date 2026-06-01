@@ -17,7 +17,14 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .progress-label{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;opacity:0.85;margin-bottom:0.5rem}
 .progress-label strong{font-size:0.9375rem;opacity:1}
 .progress-track{background:rgba(255,255,255,0.15);border-radius:999px;height:10px;overflow:hidden}
-.progress-fill{height:10px;border-radius:999px;background:linear-gradient(90deg,#10b981,#34d399);transition:width 0.6s ease}
+.progress-fill{height:10px;border-radius:999px;background-image:linear-gradient(to right,#a7f3d0,#064e3b);background-repeat:no-repeat;transition:width 0.6s ease}
+.recent{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0;border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:2.25rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.recent-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem}
+.recent-title{font-size:0.9375rem;font-weight:800;color:#065f46;display:flex;align-items:center;gap:0.5rem}
+.recent-date{font-size:0.75rem;font-weight:700;color:#059669;background:rgba(255,255,255,0.6);padding:0.2rem 0.6rem;border-radius:999px}
+.recent-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.recent-list li{font-size:0.875rem;color:#065f46;padding-left:1.25rem;position:relative}
+.recent-list li::before{content:"✓";position:absolute;left:0;color:#10b981;font-weight:800}
 
 .main{max-width:1180px;margin:0 auto;padding:2rem 1.5rem}
 
@@ -126,7 +133,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
       <span>Aulas granularizadas</span>
       <strong>4 / 24 &nbsp;—&nbsp; 16,7%</strong>
     </div>
-    <div class="progress-track"><div class="progress-fill" style="width:16.7%"></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:16.7%;background-size:599% 100%"></div></div>
   </div>
 </div>
 
@@ -137,6 +144,19 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
     <div class="kpi-card c-green"><div class="kpi-num">4<span class="kpi-denom">/24</span></div><div class="kpi-label">Roteiros prontos</div></div>
     <div class="kpi-card c-amber"><div class="kpi-num">6<span class="kpi-denom">/13</span></div><div class="kpi-label">Materiais prontos</div></div>
     <div class="kpi-card c-red"><div class="kpi-num">9</div><div class="kpi-label">Pendências pré-gravação</div></div>
+  </div>
+
+  <!-- ATIVIDADE RECENTE (de cara) -->
+  <div class="recent">
+    <div class="recent-head">
+      <div class="recent-title">📌 Atividade Recente</div>
+      <div class="recent-date">01/06/2026</div>
+    </div>
+    <ul class="recent-list">
+      <li>Aula 0.4 "O Cérebro da Sua Fábrica" granularizada (Módulo 0: 4 de 6)</li>
+      <li>2 materiais criados: texto-base das Instruções + prompt de adaptação</li>
+      <li>Cronograma completo de junho montado, até o lançamento 29/06</li>
+    </ul>
   </div>
 
   <!-- CONSTRUÇÃO DAS AULAS -->
