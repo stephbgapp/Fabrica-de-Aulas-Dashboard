@@ -8,25 +8,19 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f6f9;color:#1a1a2e;font-size:16px;line-height:1.5;min-height:100vh}
 
-/* ── HEADER ── */
 .header{background:linear-gradient(135deg,#1e3a5f 0%,#16305a 100%);color:#fff;padding:1.75rem 2rem 1.5rem}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem}
 .header-brand{font-size:0.6875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.7;margin-bottom:0.25rem}
 .header-title{font-size:1.625rem;font-weight:800;letter-spacing:-0.01em}
 .header-subtitle{font-size:0.875rem;opacity:0.75;margin-top:0.25rem}
 .header-badge{font-size:0.6875rem;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:0.375rem 0.875rem;border-radius:999px;white-space:nowrap;align-self:flex-start;margin-top:0.25rem}
-
-/* Progress bar */
-.progress-section{}
 .progress-label{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;opacity:0.85;margin-bottom:0.5rem}
 .progress-label strong{font-size:0.9375rem;opacity:1}
 .progress-track{background:rgba(255,255,255,0.15);border-radius:999px;height:10px;overflow:hidden}
 .progress-fill{height:10px;border-radius:999px;background:linear-gradient(90deg,#10b981,#34d399);transition:width 0.6s ease}
 
-/* ── MAIN ── */
 .main{max-width:1180px;margin:0 auto;padding:2rem 1.5rem}
 
-/* KPI grid */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2.25rem}
 .kpi-card{background:#fff;border:1px solid #e8eaf0;border-radius:14px;padding:1.25rem 1rem;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .kpi-num{font-size:2.25rem;font-weight:900;line-height:1;letter-spacing:-0.02em}
@@ -35,30 +29,22 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .kpi-card.c-green .kpi-num{color:#059669}
 .kpi-card.c-amber .kpi-num{color:#d97706}
 .kpi-card.c-red .kpi-num{color:#dc2626}
-.kpi-card.c-blue .kpi-num{color:#1e3a5f}
 
-/* ── SECTION ── */
 .section{margin-bottom:2.5rem}
 .section-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.625rem;border-bottom:2px solid #e8eaf0}
 .section-title{font-size:1.0625rem;font-weight:800;color:#1e3a5f;letter-spacing:-0.01em}
 .section-sub{font-size:0.8125rem;color:#9ca3af;font-weight:400}
 
-/* ── MODULE GRID ── */
 .module-grid{display:grid;gap:1rem}
-
 .mod-card{background:#fff;border:1px solid #e8eaf0;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .mod-head{padding:1rem 1.25rem 0.75rem;display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;flex-wrap:wrap;border-bottom:1px solid #f3f4f6}
 .mod-name{font-weight:800;font-size:0.9375rem;color:#1a1a2e;line-height:1.3}
 .mod-meta{font-size:0.75rem;color:#9ca3af;margin-top:0.2rem}
-
 .mod-bar-wrap{padding:0.625rem 1.25rem 0}
 .mod-bar-track{background:#f3f4f6;border-radius:999px;height:5px}
 .mod-bar-fill{height:5px;border-radius:999px}
-.fill-green{background:linear-gradient(90deg,#10b981,#34d399)}
 .fill-amber{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
 .fill-zero{background:#e5e7eb}
-
-.mod-aulas{}
 .aula-row{display:flex;align-items:center;gap:0.75rem;padding:0.625rem 1.25rem;border-bottom:1px solid #f9fafb;flex-wrap:wrap}
 .aula-row:last-child{border-bottom:none}
 .aula-row.climax-row{background:#fff9f9}
@@ -66,7 +52,6 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .aula-title{font-size:0.875rem;color:#374151;flex:1;min-width:140px}
 .aula-note{font-size:0.6875rem;color:#d97706;font-weight:600}
 
-/* Pills */
 .pill{display:inline-flex;align-items:center;gap:0.2rem;font-size:0.6875rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:999px;white-space:nowrap;flex-shrink:0}
 .p-done{background:#d1fae5;color:#065f46}
 .p-wait{background:#fef3c7;color:#92400e}
@@ -75,16 +60,13 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .p-climax{background:#fce7f3;color:#9d174d}
 .p-lia{background:#dbeafe;color:#1e40af}
 
-/* ── MATERIALS TABLE ── */
 .mat-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .mat-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e8eaf0;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .mat-table th{background:#f8fafc;font-size:0.6875rem;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.06em;padding:0.75rem 1rem;text-align:left}
 .mat-table td{padding:0.75rem 1rem;font-size:0.875rem;border-top:1px solid #f1f5f9;vertical-align:middle}
-.mat-table tr:hover td{background:#fafbfc}
 .mat-aula-tag{font-size:0.6875rem;color:#6b7280;background:#f3f4f6;padding:0.125rem 0.5rem;border-radius:4px;font-weight:600}
 .mat-obs{font-size:0.75rem;color:#94a3b8;font-style:italic}
 
-/* ── PENDÊNCIAS ── */
 .pend-list{background:#fff;border:1px solid #e8eaf0;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .pend-item{display:flex;align-items:flex-start;gap:1rem;padding:0.875rem 1.25rem;border-bottom:1px solid #f3f4f6}
 .pend-item:last-child{border-bottom:none}
@@ -96,40 +78,40 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .pend-text{font-size:0.875rem;color:#1a1a2e}
 .pend-sub{font-size:0.75rem;color:#9ca3af;margin-top:0.2rem}
 
-/* ── TIMELINE ── */
 .timeline{background:#fff;border:1px solid #e8eaf0;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.tl-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid #f3f4f6;position:relative}
+.tl-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid #f3f4f6}
 .tl-item:last-child{border-bottom:none}
 .tl-dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:800;flex-shrink:0}
 .dot-active{background:#dbeafe;color:#1e40af;border:2px solid #3b82f6}
 .dot-pend{background:#f3f4f6;color:#9ca3af;border:2px solid #e5e7eb}
-.dot-done{background:#d1fae5;color:#065f46;border:2px solid #10b981}
 .tl-body{flex:1}
 .tl-title{font-weight:700;font-size:0.9375rem;color:#1a1a2e}
 .tl-desc{font-size:0.8125rem;color:#6b7280;margin-top:0.2rem}
 
-/* ── FOOTER ── */
+.history{background:#fff;border:1px solid #e8eaf0;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.hist-entry{padding:1rem 1.25rem;border-bottom:1px solid #f3f4f6}
+.hist-entry:last-child{border-bottom:none}
+.hist-entry.latest{background:#f0fdf9}
+.hist-date{font-size:0.8125rem;font-weight:800;color:#1e3a5f;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem}
+.hist-date::before{content:"";width:9px;height:9px;border-radius:50%;background:#10b981;flex-shrink:0}
+.hist-tag{font-size:0.625rem;font-weight:700;color:#059669;background:#d1fae5;padding:0.1rem 0.5rem;border-radius:999px;text-transform:uppercase;letter-spacing:0.04em}
+.hist-list{list-style:none;display:flex;flex-direction:column;gap:0.375rem}
+.hist-list li{font-size:0.8125rem;color:#374151;padding-left:1.25rem;position:relative}
+.hist-list li::before{content:"✓";position:absolute;left:0;color:#10b981;font-weight:800}
+
 .footer{text-align:center;padding:1.5rem 1rem 2.5rem;font-size:0.75rem;color:#c4cad8}
 
-/* ── RESPONSIVE ── */
-@media(min-width:900px){
-  .module-grid{grid-template-columns:repeat(2,1fr)}
-  .mod-span-full{grid-column:1/-1}
-}
+@media(min-width:900px){.module-grid{grid-template-columns:repeat(2,1fr)}.mod-span-full{grid-column:1/-1}}
 @media(max-width:600px){
-  .header{padding:1.25rem 1rem 1rem}
-  .header-title{font-size:1.25rem}
-  .main{padding:1.25rem 1rem}
-  .kpi-grid{grid-template-columns:repeat(2,1fr)}
-  .kpi-num{font-size:1.75rem}
-  .aula-title{font-size:0.8125rem}
+  .header{padding:1.25rem 1rem 1rem}.header-title{font-size:1.25rem}
+  .main{padding:1.25rem 1rem}.kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .kpi-num{font-size:1.75rem}.aula-title{font-size:0.8125rem}
   .mat-table th,.mat-table td{padding:0.625rem 0.75rem;font-size:0.8125rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ════ HEADER ════ -->
 <div class="header">
   <div class="header-top">
     <div>
@@ -137,403 +119,168 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
       <div class="header-title">Fábrica de Aulas</div>
       <div class="header-subtitle">Dashboard de construção do produto</div>
     </div>
-    <div class="header-badge">Atualizado em 31/05/2026</div>
+    <div class="header-badge">Atualizado em 01/06/2026</div>
   </div>
-  <div class="progress-section">
+  <div>
     <div class="progress-label">
       <span>Aulas granularizadas</span>
-      <strong>3 / 24 &nbsp;—&nbsp; 12,5%</strong>
+      <strong>4 / 24 &nbsp;—&nbsp; 16,7%</strong>
     </div>
-    <div class="progress-track">
-      <div class="progress-fill" style="width:12.5%"></div>
-    </div>
+    <div class="progress-track"><div class="progress-fill" style="width:16.7%"></div></div>
   </div>
 </div>
 
-<!-- ════ MAIN ════ -->
 <div class="main">
 
-  <!-- KPIs -->
   <div class="kpi-grid">
-    <div class="kpi-card c-green">
-      <div class="kpi-num">3<span class="kpi-denom">/24</span></div>
-      <div class="kpi-label">Aulas granularizadas</div>
-    </div>
-    <div class="kpi-card c-green">
-      <div class="kpi-num">3<span class="kpi-denom">/24</span></div>
-      <div class="kpi-label">Roteiros prontos</div>
-    </div>
-    <div class="kpi-card c-amber">
-      <div class="kpi-num">4<span class="kpi-denom">/12</span></div>
-      <div class="kpi-label">Materiais prontos</div>
-    </div>
-    <div class="kpi-card c-red">
-      <div class="kpi-num">11</div>
-      <div class="kpi-label">Pendências pré-gravação</div>
-    </div>
+    <div class="kpi-card c-green"><div class="kpi-num">4<span class="kpi-denom">/24</span></div><div class="kpi-label">Aulas granularizadas</div></div>
+    <div class="kpi-card c-green"><div class="kpi-num">4<span class="kpi-denom">/24</span></div><div class="kpi-label">Roteiros prontos</div></div>
+    <div class="kpi-card c-amber"><div class="kpi-num">6<span class="kpi-denom">/13</span></div><div class="kpi-label">Materiais prontos</div></div>
+    <div class="kpi-card c-red"><div class="kpi-num">9</div><div class="kpi-label">Pendências pré-gravação</div></div>
   </div>
 
-  <!-- ═══ CONSTRUÇÃO DAS AULAS ═══ -->
+  <!-- CONSTRUÇÃO DAS AULAS -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Construção das Aulas</div>
       <div class="section-sub">24 aulas · ~6h de vídeo</div>
     </div>
-
     <div class="module-grid">
 
-      <!-- Módulo 0 — span full -->
       <div class="mod-card mod-span-full">
         <div class="mod-head">
           <div>
             <div class="mod-name">Módulo 0 — Comece por Aqui: O Nascimento da Sua Fábrica</div>
-            <div class="mod-meta">6 aulas · ~75 min de vídeo · <span style="color:#059669;font-weight:700">Nomenclatura validada com LIA ✓</span></div>
+            <div class="mod-meta">6 aulas · ~90 min · <span style="color:#059669;font-weight:700">Nomenclatura validada com LIA ✓</span></div>
           </div>
-          <span class="pill p-wait">3 de 6 granularizadas</span>
+          <span class="pill p-wait">4 de 6 granularizadas</span>
         </div>
-        <div class="mod-bar-wrap">
-          <div class="mod-bar-track"><div class="mod-bar-fill fill-amber" style="width:50%"></div></div>
-        </div>
-        <div class="mod-aulas">
-          <div class="aula-row">
-            <span class="aula-code">0.1</span>
-            <span class="aula-title">A Aula que Merece Virar Sistema</span>
-            <span class="pill p-done">✓ Roteiro pronto</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code">0.2</span>
-            <span class="aula-title">Seu Ambiente de Trabalho</span>
-            <span class="pill p-done">✓ Roteiro pronto</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code">0.3</span>
-            <span class="aula-title">Codificando Sua Identidade Pedagógica</span>
-            <span class="pill p-done">✓ Roteiro pronto</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code">0.4</span>
-            <span class="aula-title">O Cérebro da Sua Fábrica</span>
-            <span class="pill p-wait">⏳ Aguardando</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code">0.5</span>
-            <span class="aula-title">O Primeiro Molde da Sua Fábrica</span>
-            <span class="aula-note">⭐ Microvitória do módulo</span>
-            <span class="pill p-wait">⏳ Aguardando</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code">0.6</span>
-            <span class="aula-title">Segurança e Boas Práticas</span>
-            <span class="pill p-wait">⏳ Aguardando</span>
-          </div>
+        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-amber" style="width:66.7%"></div></div></div>
+        <div>
+          <div class="aula-row"><span class="aula-code">0.1</span><span class="aula-title">A Aula que Merece Virar Sistema</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+          <div class="aula-row"><span class="aula-code">0.2</span><span class="aula-title">Seu Ambiente de Trabalho</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+          <div class="aula-row"><span class="aula-code">0.3</span><span class="aula-title">Codificando Sua Identidade Pedagógica</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+          <div class="aula-row"><span class="aula-code">0.4</span><span class="aula-title">O Cérebro da Sua Fábrica</span><span class="aula-note">★ novo</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+          <div class="aula-row"><span class="aula-code">0.5</span><span class="aula-title">O Primeiro Molde da Sua Fábrica</span><span class="aula-note">⭐ Microvitória</span><span class="pill p-wait">⏳ Aguardando</span></div>
+          <div class="aula-row"><span class="aula-code">0.6</span><span class="aula-title">Segurança e Boas Práticas</span><span class="pill p-wait">⏳ Aguardando</span></div>
         </div>
       </div>
 
-      <!-- Módulos 1-7 bloco único -->
       <div class="mod-card mod-span-full">
         <div class="mod-head">
           <div>
             <div class="mod-name">Módulos 1–7 · 18 aulas</div>
-            <div class="mod-meta">Estrutura macro confirmada · <span style="color:#5b21b6;font-weight:700">Títulos pendentes de validação LIA</span> · Granularização não iniciada</div>
+            <div class="mod-meta">Estrutura macro confirmada · <span style="color:#5b21b6;font-weight:700">Títulos pendentes de validação LIA</span></div>
           </div>
           <span class="pill p-macro">0 de 18 granularizadas</span>
         </div>
-        <div class="mod-bar-wrap">
-          <div class="mod-bar-track"><div class="mod-bar-fill fill-zero" style="width:0%"></div></div>
-        </div>
-        <div class="mod-aulas">
-          <div class="aula-row">
-            <span class="aula-code" style="min-width:3.5rem">Mod. 1</span>
-            <span class="aula-title">Nova relação com IA</span>
-            <span class="aula-note">1 aula</span>
-            <span class="pill p-macro">Macro confirmado</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code" style="min-width:3.5rem">Mod. 2</span>
-            <span class="aula-title">Construir o objeto pedagógico</span>
-            <span class="aula-note">4 aulas</span>
-            <span class="pill p-macro">Macro confirmado</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code" style="min-width:3.5rem">Mod. 3</span>
-            <span class="aula-title">Aplicar à aula assinatura</span>
-            <span class="aula-note">3 aulas</span>
-            <span class="pill p-macro">Macro confirmado</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
-          <div class="aula-row climax-row">
-            <span class="aula-code" style="min-width:3.5rem">Mod. 4</span>
-            <span class="aula-title"><strong>Construir o molde</strong></span>
-            <span class="aula-note">5 aulas · ⭐ CLÍMAX DO CURSO</span>
-            <span class="pill p-climax">Clímax</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code" style="min-width:3.5rem">Mod. 5</span>
-            <span class="aula-title">Empacotamento + proofreader</span>
-            <span class="aula-note">2 aulas</span>
-            <span class="pill p-macro">Macro confirmado</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code" style="min-width:3.5rem">Mod. 6</span>
-            <span class="aula-title">Multiplicar moldes (3 moldes ativos ao final)</span>
-            <span class="aula-note">2 aulas</span>
-            <span class="pill p-macro">Macro confirmado</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
-          <div class="aula-row">
-            <span class="aula-code" style="min-width:3.5rem">Final</span>
-            <span class="aula-title">Nova identidade</span>
-            <span class="aula-note">1 aula</span>
-            <span class="pill p-macro">Macro confirmado</span>
-            <span class="pill p-lia">Validar LIA</span>
-          </div>
+        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-zero" style="width:0%"></div></div></div>
+        <div>
+          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 1</span><span class="aula-title">Nova relação com IA</span><span class="aula-note">1 aula</span><span class="pill p-macro">Macro confirmado</span><span class="pill p-lia">Validar LIA</span></div>
+          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 2</span><span class="aula-title">Construir o objeto pedagógico</span><span class="aula-note">4 aulas</span><span class="pill p-macro">Macro confirmado</span><span class="pill p-lia">Validar LIA</span></div>
+          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 3</span><span class="aula-title">Aplicar à aula assinatura</span><span class="aula-note">3 aulas</span><span class="pill p-macro">Macro confirmado</span><span class="pill p-lia">Validar LIA</span></div>
+          <div class="aula-row climax-row"><span class="aula-code" style="min-width:3.5rem">Mod. 4</span><span class="aula-title"><strong>Construir o molde</strong></span><span class="aula-note">5 aulas · ⭐ CLÍMAX</span><span class="pill p-climax">Clímax</span><span class="pill p-lia">Validar LIA</span></div>
+          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 5</span><span class="aula-title">Empacotamento + proofreader</span><span class="aula-note">2 aulas</span><span class="pill p-macro">Macro confirmado</span><span class="pill p-lia">Validar LIA</span></div>
+          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 6</span><span class="aula-title">Multiplicar moldes (3 moldes ativos ao final)</span><span class="aula-note">2 aulas</span><span class="pill p-macro">Macro confirmado</span><span class="pill p-lia">Validar LIA</span></div>
+          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Final</span><span class="aula-title">Nova identidade</span><span class="aula-note">1 aula</span><span class="pill p-macro">Macro confirmado</span><span class="pill p-lia">Validar LIA</span></div>
         </div>
       </div>
 
-    </div><!-- /module-grid -->
-  </div><!-- /section -->
+    </div>
+  </div>
 
-  <!-- ═══ MATERIAIS DE APOIO ═══ -->
+  <!-- MATERIAIS -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Materiais de Apoio</div>
-      <div class="section-sub">4 prontos · 8 pendentes</div>
+      <div class="section-sub">6 prontos · 7 pendentes</div>
     </div>
     <div class="mat-wrap">
       <table class="mat-table">
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Material</th>
-            <th>Aula</th>
-            <th>Observação</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Status</th><th>Material</th><th>Aula</th><th>Observação</th></tr></thead>
         <tbody>
-          <tr>
-            <td><span class="pill p-done">✓ Pronto</span></td>
-            <td>Tabelinha Free vs Pro</td>
-            <td><span class="mat-aula-tag">0.2</span></td>
-            <td class="mat-obs">Criada em 26/05/2026</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-done">✓ Pronto</span></td>
-            <td>Prompt síntese identidade pedagógica v3.1</td>
-            <td><span class="mat-aula-tag">0.3</span></td>
-            <td class="mat-obs">Versão oficial — testada com Billy D (Renata) e E (Juliana)</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-done">✓ Pronto</span></td>
-            <td>PDF Perguntas-Guia (áudio identidade)</td>
-            <td><span class="mat-aula-tag">0.3</span></td>
-            <td class="mat-obs">7 perguntas · pendente hospedagem na plataforma</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-done">✓ Pronto</span></td>
-            <td>Pesquisa planos Claude atualizada</td>
-            <td><span class="mat-aula-tag">0.2</span></td>
-            <td class="mat-obs">Feita em 26/05/2026</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>Template descrição projeto Claude pedagógico</td>
-            <td><span class="mat-aula-tag">0.4</span></td>
-            <td class="mat-obs">Desbloqueia granularização da 0.4</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>Template ficha da aula assinatura</td>
-            <td><span class="mat-aula-tag">0.5</span></td>
-            <td class="mat-obs">Desbloqueia granularização da 0.5</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>Disclaimer LGPD (revisado)</td>
-            <td><span class="mat-aula-tag">0.6</span></td>
-            <td class="mat-obs">Redigir + revisar antes da 1ª venda</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>Link tutorial externo — criação conta Google</td>
-            <td><span class="mat-aula-tag">0.2</span></td>
-            <td class="mat-obs">Confirmar link antes de gravar</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>Conta Claude nova (zerada) para gravação</td>
-            <td><span class="mat-aula-tag">0.2</span></td>
-            <td class="mat-obs">Email Google separado — criar antes de gravar a 0.2</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>2ª Fábrica Steph (perfil de exemplo)</td>
-            <td><span class="mat-aula-tag">0.3</span></td>
-            <td class="mat-obs">Áudio próprio + transcrição + síntese gerada no Claude</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>3 templates de skill (Molde Aberto, Molde-com-Fonte, Proofreader)</td>
-            <td><span class="mat-aula-tag">Módulos 5–6</span></td>
-            <td class="mat-obs">A extrair das 6 skills já em produção na conta Steph</td>
-          </tr>
-          <tr>
-            <td><span class="pill p-miss">🔴 Pendente</span></td>
-            <td>Google Form — registro de transformação</td>
-            <td><span class="mat-aula-tag">Aula final</span></td>
-            <td class="mat-obs">Criar antes do lançamento · 5 perguntas + autorização de uso</td>
-          </tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Tabelinha Free vs Pro</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Criada em 26/05/2026</td></tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Prompt síntese identidade pedagógica v3.1</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">Testado com Billy D e E</td></tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>PDF Perguntas-Guia (áudio identidade)</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">7 perguntas · pendente hospedagem</td></tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Pesquisa planos Claude atualizada</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Feita em 26/05/2026</td></tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Texto-base das Instruções do projeto</td><td><span class="mat-aula-tag">0.4</span></td><td class="mat-obs">Criado em 01/06/2026 — só identidade, sem formato</td></tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Prompt de adaptação das Instruções</td><td><span class="mat-aula-tag">0.4</span></td><td class="mat-obs">Criado em 01/06/2026</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Template ficha da aula assinatura</td><td><span class="mat-aula-tag">0.5</span></td><td class="mat-obs">Desbloqueia granularização da 0.5</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Disclaimer LGPD</td><td><span class="mat-aula-tag">0.6</span></td><td class="mat-obs">Redigir + revisar antes da 1ª venda</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Link tutorial externo — criação conta Google</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Confirmar antes de gravar</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Conta Claude nova (zerada) para gravação</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Email Google separado</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>2ª Fábrica Steph (perfil de exemplo)</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">Áudio já existe transcrito — usar o dela</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>3 templates de skill (Molde Aberto, Fonte, Proofreader)</td><td><span class="mat-aula-tag">Mód. 5–6</span></td><td class="mat-obs">Extrair das 6 skills em produção</td></tr>
+          <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Google Form — registro de transformação</td><td><span class="mat-aula-tag">Final</span></td><td class="mat-obs">Criar antes do lançamento</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- ═══ PENDÊNCIAS PRÉ-GRAVAÇÃO ═══ -->
+  <!-- PENDÊNCIAS -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Pendências Pré-Gravação</div>
-      <div class="section-sub">11 itens · <span style="color:#ef4444;font-weight:700">vermelho = crítico</span> · <span style="color:#d97706;font-weight:700">âmbar = alto</span></div>
+      <div class="section-sub">9 itens</div>
     </div>
     <div class="pend-list">
-      <div class="pend-item p-crit">
-        <div class="pend-num">1</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Granularizar Módulos 1–7</strong> — 18 aulas com estrutura macro; conteúdo a detalhar e roteirizar</div>
-          <div class="pend-sub">Desbloqueia → roteiros, validação LIA de nomenclaturas, gravação de todas as aulas</div>
-        </div>
-      </div>
-      <div class="pend-item p-crit">
-        <div class="pend-num">2</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Roteiros das 21 aulas restantes</strong> — aulas 0.4, 0.5, 0.6 + todos os Módulos 1–7</div>
-          <div class="pend-sub">Desbloqueia → gravação</div>
-        </div>
-      </div>
-      <div class="pend-item p-crit">
-        <div class="pend-num">3</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Validação LIA — nomenclaturas dos Módulos 1–7</strong></div>
-          <div class="pend-sub">Apenas o Módulo 0 tem nomenclatura validada com a LIA</div>
-        </div>
-      </div>
-      <div class="pend-item p-high">
-        <div class="pend-num">4</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Template descrição projeto Claude pedagógico</strong></div>
-          <div class="pend-sub">Desbloqueia → granularização da aula 0.4</div>
-        </div>
-      </div>
-      <div class="pend-item p-high">
-        <div class="pend-num">5</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Template ficha da aula assinatura</strong></div>
-          <div class="pend-sub">Desbloqueia → granularização da aula 0.5</div>
-        </div>
-      </div>
-      <div class="pend-item p-high">
-        <div class="pend-num">6</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Extrair 3 templates de skill</strong> — Molde Aberto, Molde-com-Fonte, Proofreader Pessoal</div>
-          <div class="pend-sub">Matéria-prima: 6 skills já em produção na conta Steph · Necessários para os Módulos 5–6</div>
-        </div>
-      </div>
-      <div class="pend-item p-norm">
-        <div class="pend-num">7</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Criar conta Claude nova (zerada) para gravação</strong></div>
-          <div class="pend-sub">Email Google separado · Criar antes de gravar a aula 0.2</div>
-        </div>
-      </div>
-      <div class="pend-item p-norm">
-        <div class="pend-num">8</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Criar 2ª Fábrica Steph (perfil de exemplo para aula 0.3)</strong></div>
-          <div class="pend-sub">Gravar áudio próprio respondendo as 7 perguntas · Transcrever no Clipto · Gerar síntese no Claude</div>
-        </div>
-      </div>
-      <div class="pend-item p-norm">
-        <div class="pend-num">9</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Confirmar link de afiliada Clipto</strong></div>
-          <div class="pend-sub">Link já existe — verificar validade antes da gravação da 0.3</div>
-        </div>
-      </div>
-      <div class="pend-item p-norm">
-        <div class="pend-num">10</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Decisão de plataforma de hospedagem</strong> — Hotmart, Kiwify ou Cademí</div>
-          <div class="pend-sub">Desbloqueia → inscrição, integrações, setup de página de vendas</div>
-        </div>
-      </div>
-      <div class="pend-item p-norm">
-        <div class="pend-num">11</div>
-        <div class="pend-body">
-          <div class="pend-text"><strong>Confirmar valor atual do Plano Pro Claude em reais</strong></div>
-          <div class="pend-sub">Cotação oscila — verificar próximo da data de gravação para manter dado correto na aula 0.2</div>
-        </div>
-      </div>
+      <div class="pend-item p-crit"><div class="pend-num">1</div><div class="pend-body"><div class="pend-text"><strong>Granularizar Módulos 1–7</strong> — 18 aulas com estrutura macro</div><div class="pend-sub">Desbloqueia → roteiros, validação LIA, gravação</div></div></div>
+      <div class="pend-item p-crit"><div class="pend-num">2</div><div class="pend-body"><div class="pend-text"><strong>Roteiros das 20 aulas restantes</strong> — 0.5, 0.6 + Módulos 1–7</div><div class="pend-sub">Desbloqueia → gravação</div></div></div>
+      <div class="pend-item p-crit"><div class="pend-num">3</div><div class="pend-body"><div class="pend-text"><strong>Validação LIA — nomenclaturas dos Módulos 1–7</strong></div><div class="pend-sub">Apenas o Módulo 0 tem nomenclatura validada</div></div></div>
+      <div class="pend-item p-high"><div class="pend-num">4</div><div class="pend-body"><div class="pend-text"><strong>Template ficha da aula assinatura</strong></div><div class="pend-sub">Desbloqueia → granularização da aula 0.5</div></div></div>
+      <div class="pend-item p-high"><div class="pend-num">5</div><div class="pend-body"><div class="pend-text"><strong>Extrair 3 templates de skill</strong> (Molde Aberto, Molde-com-Fonte, Proofreader)</div><div class="pend-sub">Matéria-prima: 6 skills em produção na conta Steph</div></div></div>
+      <div class="pend-item p-norm"><div class="pend-num">6</div><div class="pend-body"><div class="pend-text"><strong>Conta Claude nova (zerada) para gravação</strong></div><div class="pend-sub">Email Google separado · criar perto da gravação</div></div></div>
+      <div class="pend-item p-norm"><div class="pend-num">7</div><div class="pend-body"><div class="pend-text"><strong>2ª Fábrica Steph (perfil de exemplo para 0.3)</strong></div><div class="pend-sub">Áudio próprio já transcrito — reutilizar</div></div></div>
+      <div class="pend-item p-norm"><div class="pend-num">8</div><div class="pend-body"><div class="pend-text"><strong>Decisão de plataforma</strong> — Hotmart, Kiwify ou Cademí</div><div class="pend-sub">Decidir na sessão de 15/06</div></div></div>
+      <div class="pend-item p-norm"><div class="pend-num">9</div><div class="pend-body"><div class="pend-text"><strong>Confirmar valor Plano Pro Claude em reais</strong></div><div class="pend-sub">Cotação oscila — verificar perto da gravação</div></div></div>
     </div>
   </div>
 
-  <!-- ═══ PRÓXIMOS MARCOS ═══ -->
+  <!-- PRÓXIMOS MARCOS -->
+  <div class="section">
+    <div class="section-header"><div class="section-title">Próximos Marcos</div><div class="section-sub">rumo ao lançamento 29/06</div></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot dot-active">1</div><div class="tl-body"><div class="tl-title">Granularização — 0.5, 0.6 + Módulos 1–7</div><div class="tl-desc">Termina ~14/06. Validar nomenclaturas com LIA em paralelo.</div></div></div>
+      <div class="tl-item"><div class="tl-dot dot-pend">2</div><div class="tl-body"><div class="tl-title">Gravação das 24 aulas + VSL</div><div class="tl-desc">15–21/06. Automação de edição construída em paralelo.</div></div></div>
+      <div class="tl-item"><div class="tl-dot dot-pend">3</div><div class="tl-body"><div class="tl-title">Página de vendas + Criativos</div><div class="tl-desc">21–26/06. Copy validada com a LIA · página via Claude Design → HTML.</div></div></div>
+      <div class="tl-item"><div class="tl-dot dot-pend">4</div><div class="tl-body"><div class="tl-title">Setup de tráfego + teste de funil</div><div class="tl-desc">27–28/06. Funil testado ponta a ponta.</div></div></div>
+      <div class="tl-item"><div class="tl-dot dot-pend">5</div><div class="tl-body"><div class="tl-title">🚀 Lançamento — coorte fundadora</div><div class="tl-desc">29/06 · Ticket R$97 · tráfego pago ativo.</div></div></div>
+    </div>
+  </div>
+
+  <!-- HISTÓRICO DE PROGRESSO -->
   <div class="section">
     <div class="section-header">
-      <div class="section-title">Próximos Marcos</div>
+      <div class="section-title">Histórico de Progresso</div>
+      <div class="section-sub">o que andou a cada atualização</div>
     </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot dot-active">1</div>
-        <div class="tl-body">
-          <div class="tl-title">Granularização — Módulos 1–7</div>
-          <div class="tl-desc">18 aulas com estrutura macro confirmada. Granularizar + fechar roteiros. Validar nomenclaturas com LIA em paralelo.</div>
-        </div>
+    <div class="history">
+      <div class="hist-entry latest">
+        <div class="hist-date">01/06/2026 <span class="hist-tag">mais recente</span></div>
+        <ul class="hist-list">
+          <li>Aula 0.4 "O Cérebro da Sua Fábrica" granularizada (Módulo 0: 3→4 de 6)</li>
+          <li>2 materiais criados: texto-base das Instruções + prompt de adaptação</li>
+          <li>Pendência "mover chat entre projetos" resolvida</li>
+          <li>Protocolo de granularização definido (modo normal + fluxo fixo)</li>
+          <li>Cronograma completo de junho no Google Calendar, até o lançamento 29/06</li>
+        </ul>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot dot-pend">2</div>
-        <div class="tl-body">
-          <div class="tl-title">Pendências operacionais pré-gravação</div>
-          <div class="tl-desc">Templates (0.4, 0.5), conta Claude nova, 2ª Fábrica Steph, plataforma definida, Clipto confirmado.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot dot-pend">3</div>
-        <div class="tl-body">
-          <div class="tl-title">Gravação das 24 aulas</div>
-          <div class="tl-desc">Após todos os roteiros fechados e pendências operacionais resolvidas. Data a definir.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot dot-pend">4</div>
-        <div class="tl-body">
-          <div class="tl-title">VSL — P0 (12–18 min)</div>
-          <div class="tl-desc">Após P1A pronto. Estrutura: dor invisível → erro → descoberta → demo ao vivo → mecanismo → nova identidade → CTA.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot dot-pend">5</div>
-        <div class="tl-body">
-          <div class="tl-title">Página de vendas</div>
-          <div class="tl-desc">Após validação LIA: copy, headline, estrutura de página. Plataforma precisa estar definida.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot dot-pend">6</div>
-        <div class="tl-body">
-          <div class="tl-title">Lançamento — coorte fundadora</div>
-          <div class="tl-desc">Ticket R$97 · "Turma fundadora / coorte de construção" (nunca "desconto") · Canal: tráfego pago.</div>
-        </div>
+      <div class="hist-entry">
+        <div class="hist-date">31/05/2026</div>
+        <ul class="hist-list">
+          <li>Dashboard criado e publicado no GitHub Pages (link permanente)</li>
+          <li>Terminologia "Bloco" → "Módulo" em todo o material</li>
+          <li>Nome final "Fábrica de Aulas" confirmado</li>
+          <li>Consultoria jurídica saiu das pendências bloqueantes</li>
+        </ul>
       </div>
     </div>
   </div>
 
-</div><!-- /main -->
+</div>
 
 <div class="footer">
-  Fábrica de Aulas · Pedagogia Amplificada · Dashboard atualizado automaticamente ao final de cada sessão de trabalho<br>
-  Fonte de verdade: Notion PLD
+  Fábrica de Aulas · Pedagogia Amplificada · Atualizado automaticamente ao final de cada sessão · Fonte: Notion PLD
 </div>
 
 </body>
