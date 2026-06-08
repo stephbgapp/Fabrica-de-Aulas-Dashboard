@@ -112,6 +112,12 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 
 .footer{text-align:center;padding:1.5rem 1rem 2.5rem;font-size:0.75rem;color:#c4cad8}
 
+.dash-tabs{display:flex;gap:.5rem;justify-content:center;background:#16305a;padding:0 1rem .9rem;flex-wrap:wrap}
+.dtab{background:rgba(255,255,255,.1);color:#cbd5e1;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.45rem 1.1rem;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit}
+.dtab.active{background:#fff;color:#16305a}
+.view{display:none}
+.view.active{display:block}
+
 @media(min-width:900px){.module-grid{grid-template-columns:repeat(2,1fr)}.mod-span-full{grid-column:1/-1}}
 @media(max-width:600px){
   .header{padding:1.25rem 1rem 1rem}.header-title{font-size:1.25rem}
@@ -130,23 +136,28 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
       <div class="header-title">Fábrica de Aulas</div>
       <div class="header-subtitle">Dashboard de construção do produto</div>
     </div>
-    <div class="header-badge">Atualizado em 05/06/2026</div>
+    <div class="header-badge">Atualizado em 08/06/2026</div>
   </div>
   <div>
     <div class="progress-label">
       <span>Aulas granularizadas</span>
-      <strong>10 / 23 &nbsp;—&nbsp; 43,5%</strong>
+      <strong>13 / 23 &nbsp;—&nbsp; 56,5%</strong>
     </div>
-    <div class="progress-track"><div class="progress-fill" style="width:43.5%;background-size:230% 100%"></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:56.5%;background-size:230% 100%"></div></div>
   </div>
 </div>
 
-<div class="main">
+<div class="dash-tabs">
+  <button class="dtab active" data-view="progresso">📊 Progresso</button>
+  <button class="dtab" data-view="trilha">🗺️ Trilha da Billy</button>
+</div>
+
+<div class="main view active" id="view-progresso">
 
   <div class="kpi-grid">
-    <div class="kpi-card c-green"><div class="kpi-num">10<span class="kpi-denom">/23</span></div><div class="kpi-label">Aulas granularizadas</div></div>
-    <div class="kpi-card c-amber"><div class="kpi-num">10<span class="kpi-denom">/23</span></div><div class="kpi-label">Roteiros prontos</div></div>
-    <div class="kpi-card c-amber"><div class="kpi-num">10<span class="kpi-denom">/15</span></div><div class="kpi-label">Materiais prontos</div></div>
+    <div class="kpi-card c-green"><div class="kpi-num">13<span class="kpi-denom">/23</span></div><div class="kpi-label">Aulas granularizadas</div></div>
+    <div class="kpi-card c-amber"><div class="kpi-num">13<span class="kpi-denom">/23</span></div><div class="kpi-label">Roteiros prontos</div></div>
+    <div class="kpi-card c-amber"><div class="kpi-num">13<span class="kpi-denom">/18</span></div><div class="kpi-label">Materiais prontos</div></div>
     <div class="kpi-card c-red"><div class="kpi-num">7</div><div class="kpi-label">Pendências pré-gravação</div></div>
   </div>
 
@@ -154,14 +165,14 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
   <div class="recent">
     <div class="recent-head">
       <div class="recent-title">📌 Atividade Recente</div>
-      <div class="recent-date">05/06/2026</div>
+      <div class="recent-date">08/06/2026</div>
     </div>
     <ul class="recent-list">
-      <li>Módulos 1 e 2 — HTMLs da jornada da Renata + PDFs <strong>fechados e aprovados</strong> (cada aula em página nova)</li>
-      <li>Módulo 1: aba <strong>Comandos</strong> (4 comandos copiáveis) · fluxo Opção B (identidade nas Instruções do projeto na 1.3, cérebro substitui na 1.4)</li>
-      <li>Paleta <strong>versão A</strong> definida com pesquisa de psicologia das cores: teal-base + lilás nos blocos de jornada · convenção fixa</li>
-      <li>Teste de QA com Billy fictícia (Juliana) percorrendo os 2 módulos · proofreading do Módulo 2</li>
-      <li>Roteiro da aula 2.0 ajustado: se o Claude já acertar, a professora assume o comando mesmo assim (não depende do erro)</li>
+      <li><strong>Módulo 3 — O DNA da Sua Aula</strong> granularizado e fechado: 3 aulas (3.1–3.3) + roteiros + HTML da jornada da Renata (10→13 de 23)</li>
+      <li>Nomes validados com a LIA · arco descobrir → proteger → consolidar · as regras do jeito de ensinar sobem pro <strong>cérebro</strong> (não pro Mapa)</li>
+      <li>Arquitetura em 3 camadas travada (cérebro · regras · molde) · glossário afetivo↔técnico vira entregável do curso</li>
+      <li>Documento vivo da Billy = <strong>Google Doc ou Word</strong> (revoga o .txt como lar) · Notion fica fora do P1 (vira automação do P2)</li>
+      <li>HTML do M3 com botão de copiar nas falas genéricas · "cara" → "personalização" em todo o material</li>
     </ul>
   </div>
 
@@ -212,15 +223,30 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
       <div class="mod-card mod-span-full">
         <div class="mod-head">
           <div>
-            <div class="mod-name">Módulos 3–6 + Final · 13 aulas</div>
+            <div class="mod-name">Módulo 3 — O DNA da Sua Aula</div>
+            <div class="mod-meta">3 aulas · <span style="color:#059669;font-weight:700">Granularizado + roteiros + HTML + nomes validados LIA ✓</span></div>
+          </div>
+          <span class="pill p-done">✓ 3 de 3 — completo</span>
+        </div>
+        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-green" style="width:100%"></div></div></div>
+        <div>
+          <div class="aula-row"><span class="aula-code">3.1</span><span class="aula-title">O Que Você Faz Sem Perceber</span><span class="aula-note">regras de método</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+          <div class="aula-row"><span class="aula-code">3.2</span><span class="aula-title">Aquilo Que Você Não Abre Mão</span><span class="aula-note">relação + limites</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+          <div class="aula-row"><span class="aula-code">3.3</span><span class="aula-title">O Seu Jeito, Escrito</span><span class="aula-note">→ cérebro</span><span class="pill p-done">✓ Roteiro pronto</span></div>
+        </div>
+      </div>
+
+      <div class="mod-card mod-span-full">
+        <div class="mod-head">
+          <div>
+            <div class="mod-name">Módulos 4–6 + Final · 10 aulas</div>
             <div class="mod-meta">Estrutura macro confirmada · <span style="color:#5b21b6;font-weight:700">A granularizar</span></div>
           </div>
-          <span class="pill p-macro">0 de 13 granularizadas</span>
+          <span class="pill p-macro">0 de 10 granularizadas</span>
         </div>
         <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-zero" style="width:0%"></div></div></div>
         <div>
-          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 3</span><span class="aula-title">Aplicar à aula assinatura (regras pedagógicas)</span><span class="aula-note">3 aulas</span><span class="pill p-macro">Macro confirmado</span></div>
-          <div class="aula-row climax-row"><span class="aula-code" style="min-width:3.5rem">Mod. 4</span><span class="aula-title"><strong>Construir o molde</strong></span><span class="aula-note">5 aulas · ⭐ CLÍMAX</span><span class="pill p-climax">Clímax</span></div>
+          <div class="aula-row climax-row"><span class="aula-code" style="min-width:3.5rem">Mod. 4</span><span class="aula-title"><strong>Construir o molde</strong></span><span class="aula-note">5 aulas · ⭐ CLÍMAX · próximo</span><span class="pill p-climax">Clímax</span></div>
           <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 5</span><span class="aula-title">Empacotamento + proofreader</span><span class="aula-note">2 aulas</span><span class="pill p-macro">Macro confirmado</span></div>
           <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 6</span><span class="aula-title">Multiplicar moldes (3 moldes ativos ao final)</span><span class="aula-note">2 aulas</span><span class="pill p-macro">Macro confirmado</span></div>
           <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Final</span><span class="aula-title">Nova identidade</span><span class="aula-note">1 aula</span><span class="pill p-macro">Macro confirmado</span></div>
@@ -234,7 +260,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
   <div class="section">
     <div class="section-header">
       <div class="section-title">Materiais de Apoio</div>
-      <div class="section-sub">9 prontos · 5 pendentes</div>
+      <div class="section-sub">13 prontos · 5 pendentes</div>
     </div>
     <div class="mat-wrap">
       <table class="mat-table">
@@ -252,6 +278,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
           <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Ficha "Mapa da Aula" (.txt)</td><td><span class="mat-aula-tag">Mód. 2</span></td><td class="mat-obs">ex-"Planta da Aula" · preenchida ao longo do Módulo 2</td></tr>
           <tr><td><span class="pill p-done">✓ Pronto</span></td><td>HTML + PDF — jornada da Renata (Módulo 1)</td><td><span class="mat-aula-tag">Mód. 1</span></td><td class="mat-obs">5 abas + aba Comandos · paleta versão A</td></tr>
           <tr><td><span class="pill p-done">✓ Pronto</span></td><td>HTML + PDF — jornada da Renata (Módulo 2)</td><td><span class="mat-aula-tag">Mód. 2</span></td><td class="mat-obs">5 abas (2.0–2.4) + Mapa da Aula integrado</td></tr>
+          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>HTML — jornada da Renata (Módulo 3)</td><td><span class="mat-aula-tag">Mód. 3</span></td><td class="mat-obs">3 abas (3.1–3.3) + botão de copiar + bloco de recado</td></tr>
           <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Link tutorial externo — criação conta Google</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Confirmar antes de gravar</td></tr>
           <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>Conta Claude nova (zerada) para gravação</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Email Google separado</td></tr>
           <tr><td><span class="pill p-miss">🔴 Pendente</span></td><td>2ª Fábrica Steph (perfil de exemplo)</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">Áudio já existe transcrito — usar o dela</td></tr>
@@ -269,9 +296,9 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
       <div class="section-sub">8 itens</div>
     </div>
     <div class="pend-list">
-      <div class="pend-item p-crit"><div class="pend-num">1</div><div class="pend-body"><div class="pend-text"><strong>Granularizar Módulos 1–7</strong> — 18 aulas com estrutura macro (começa pelo Módulo 1 amanhã)</div><div class="pend-sub">Desbloqueia → roteiros, validação LIA, gravação</div></div></div>
-      <div class="pend-item p-crit"><div class="pend-num">2</div><div class="pend-body"><div class="pend-text"><strong>Roteiros das 18 aulas dos Módulos 1–7</strong></div><div class="pend-sub">Desbloqueia → gravação</div></div></div>
-      <div class="pend-item p-crit"><div class="pend-num">3</div><div class="pend-body"><div class="pend-text"><strong>Validação LIA — nomenclaturas dos Módulos 1–7</strong></div><div class="pend-sub">Apenas o Módulo 0 tem nomenclatura validada · prompt do Módulo 1 amanhã</div></div></div>
+      <div class="pend-item p-crit"><div class="pend-num">1</div><div class="pend-body"><div class="pend-text"><strong>Granularizar Módulos 4–6 + Final</strong> — 10 aulas restantes (próximo: Módulo 4, o clímax)</div><div class="pend-sub">Desbloqueia → roteiros, validação LIA, gravação</div></div></div>
+      <div class="pend-item p-crit"><div class="pend-num">2</div><div class="pend-body"><div class="pend-text"><strong>Roteiros das 10 aulas dos Módulos 4–6 + Final</strong></div><div class="pend-sub">Desbloqueia → gravação</div></div></div>
+      <div class="pend-item p-crit"><div class="pend-num">3</div><div class="pend-body"><div class="pend-text"><strong>Validação LIA — nomenclaturas dos Módulos 4–6 + Final</strong></div><div class="pend-sub">Módulos 1, 2 e 3 já validados com a LIA</div></div></div>
       <div class="pend-item p-high"><div class="pend-num">4</div><div class="pend-body"><div class="pend-text"><strong>Extrair 3 templates de skill</strong> (Molde Aberto, Molde-com-Fonte, Proofreader)</div><div class="pend-sub">Faltam no PC: courage-to-be-disliked + lesson-proofreader · esl-html-lesson ok</div></div></div>
       <div class="pend-item p-norm"><div class="pend-num">5</div><div class="pend-body"><div class="pend-text"><strong>Conta Claude nova (zerada) para gravação</strong></div><div class="pend-sub">Email Google separado · criar perto da gravação</div></div></div>
       <div class="pend-item p-norm"><div class="pend-num">6</div><div class="pend-body"><div class="pend-text"><strong>2ª Fábrica Steph (perfil de exemplo para 0.3)</strong></div><div class="pend-sub">Áudio próprio já transcrito — reutilizar</div></div></div>
@@ -284,7 +311,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
   <div class="section">
     <div class="section-header"><div class="section-title">Próximos Marcos</div><div class="section-sub">rumo ao lançamento 29/06</div></div>
     <div class="timeline">
-      <div class="tl-item"><div class="tl-dot dot-active">1</div><div class="tl-body"><div class="tl-title">Granularização — Módulos 1–7</div><div class="tl-desc">Módulo 0 fechado. Começa pelo Módulo 1 amanhã. Validar nomenclaturas com LIA em paralelo.</div></div></div>
+      <div class="tl-item"><div class="tl-dot dot-active">1</div><div class="tl-body"><div class="tl-title">Granularização — Módulos 4–6 + Final</div><div class="tl-desc">Módulos 1, 2 e 3 fechados (13/23). Próximo: Módulo 4 (o clímax). Validar nomes com a LIA em paralelo.</div></div></div>
       <div class="tl-item"><div class="tl-dot dot-pend">2</div><div class="tl-body"><div class="tl-title">Gravação das 23 aulas + VSL</div><div class="tl-desc">15–21/06. Automação de edição construída em paralelo.</div></div></div>
       <div class="tl-item"><div class="tl-dot dot-pend">3</div><div class="tl-body"><div class="tl-title">Página de vendas + Criativos</div><div class="tl-desc">21–26/06. Copy validada com a LIA · página via Claude Design → HTML.</div></div></div>
       <div class="tl-item"><div class="tl-dot dot-pend">4</div><div class="tl-body"><div class="tl-title">Setup de tráfego + teste de funil</div><div class="tl-desc">27–28/06. Funil testado ponta a ponta.</div></div></div>
@@ -300,7 +327,17 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
     </div>
     <div class="history">
       <div class="hist-entry latest">
-        <div class="hist-date">05/06/2026 <span class="hist-tag">mais recente</span></div>
+        <div class="hist-date">08/06/2026 <span class="hist-tag">mais recente</span></div>
+        <ul class="hist-list">
+          <li>Módulo 3 "O DNA da Sua Aula" granularizado e fechado — 3 aulas (3.1–3.3) + roteiros + HTML da jornada da Renata (10→13 de 23)</li>
+          <li>Nomes validados com a LIA · arco descobrir → proteger → consolidar · as regras do jeito de ensinar sobem pro cérebro (não pro Mapa)</li>
+          <li>Arquitetura em 3 camadas travada (cérebro · regras · molde) · glossário afetivo↔técnico vira entregável do curso</li>
+          <li>Documento vivo da Billy = Google Doc ou Word (revoga .txt como lar) · Notion fora do P1 (vira automação do P2)</li>
+          <li>HTML do M3 com botão de copiar + bloco de recado · "cara" → "personalização" em todo o material</li>
+        </ul>
+      </div>
+      <div class="hist-entry">
+        <div class="hist-date">05/06/2026</div>
         <ul class="hist-list">
           <li>Módulos 1 e 2 — HTMLs da jornada + PDFs fechados e aprovados (cada aula em página nova)</li>
           <li>Módulo 1: aba Comandos (4 comandos copiáveis) + fluxo Opção B (identidade nas Instruções na 1.3; cérebro substitui na 1.4) + ficha apresentada na 1.5</li>
@@ -354,9 +391,25 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 
 </div>
 
+<div class="view" id="view-trilha">
+  <iframe src="trilha.html" title="Trilha da Billy — Fábrica de Aulas" style="width:100%;height:1150px;border:none;display:block"></iframe>
+</div>
+
 <div class="footer">
   Fábrica de Aulas · Ensino Amplificado · Atualizado ao final de cada sessão · Fonte: Notion PLD
 </div>
+
+<script>
+document.querySelectorAll('.dtab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.dtab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.view').forEach(function(x){x.classList.remove('active')});
+    t.classList.add('active');
+    document.getElementById('view-'+t.dataset.view).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>
 
 </body>
 </html>
