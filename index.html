@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard — Fábrica de Aulas P1</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fontes.css">
 <style>
 /* Design: linguagem do painel do Ecossistema (Paleta 2026) com títulos em
-   Manrope bold — mais firme, menos arredondado que a Fredoka. */
+   Manrope bold — mais firme, menos arredondado que a Fredoka.
+   Este arquivo é SÓ design + renderização: o conteúdo vive em dados-p1a.js.
+   Regenerar o dashboard = editar dados-p1a.js (decisão UX 10/06/2026). */
 :root{
   --ivory:#FAF6EF; --sand:#E7D8C3; --sand-deep:#D8C3A6;
   --sage:#A9C0A4; --dusty:#A9C3D6; --lav:#CABFDB;
@@ -74,6 +74,7 @@ body{font-family:'Nunito',sans-serif;color:var(--ink);font-size:16px;line-height
 .aula-row.climax-row{background:#fdf3ec}
 .aula-row.elim{opacity:0.55}
 .aula-code{font-size:0.75rem;font-weight:800;color:var(--ink-soft);min-width:2.75rem;flex-shrink:0}
+.aula-code.largo{min-width:3.5rem}
 .aula-title{font-size:0.875rem;color:#4a4039;flex:1;min-width:140px}
 .aula-title.strike{text-decoration:line-through;color:var(--ink-soft)}
 .aula-note{font-size:0.6875rem;color:var(--clay);font-weight:700}
@@ -154,14 +155,14 @@ body{font-family:'Nunito',sans-serif;color:var(--ink);font-size:16px;line-height
       <div class="header-title">Fábrica de Aulas</div>
       <div class="header-subtitle">Dashboard de construção do produto</div>
     </div>
-    <div class="header-badge">Atualizado em 08/06/2026</div>
+    <div class="header-badge" id="hdr-badge"></div>
   </div>
   <div>
     <div class="progress-label">
       <span>Aulas granularizadas</span>
-      <strong>13 / 23 &nbsp;—&nbsp; 56,5%</strong>
+      <strong id="hdr-prog"></strong>
     </div>
-    <div class="progress-track"><div class="progress-fill" style="width:56.5%;background-size:230% 100%"></div></div>
+    <div class="progress-track"><div class="progress-fill" id="hdr-fill"></div></div>
   </div>
 </div>
 
@@ -172,241 +173,52 @@ body{font-family:'Nunito',sans-serif;color:var(--ink);font-size:16px;line-height
 
 <div class="main view active" id="view-progresso">
 
-  <div class="kpi-grid">
-    <div class="kpi-card c-green"><div class="kpi-num">13<span class="kpi-denom">/23</span></div><div class="kpi-label">Aulas granularizadas</div></div>
-    <div class="kpi-card c-amber"><div class="kpi-num">13<span class="kpi-denom">/23</span></div><div class="kpi-label">Roteiros prontos</div></div>
-    <div class="kpi-card c-amber"><div class="kpi-num">13<span class="kpi-denom">/18</span></div><div class="kpi-label">Materiais prontos</div></div>
-    <div class="kpi-card c-red"><div class="kpi-num">7</div><div class="kpi-label">Pendências pré-gravação</div></div>
-  </div>
+  <div class="kpi-grid" id="kpis"></div>
 
-  <!-- ATIVIDADE RECENTE (de cara) -->
-  <div class="recent">
-    <div class="recent-head">
-      <div class="recent-title">Atividade Recente</div>
-      <div class="recent-date">08/06/2026</div>
-    </div>
-    <ul class="recent-list">
-      <li><strong>Módulo 3 — O DNA da Sua Aula</strong> granularizado e fechado: 3 aulas (3.1–3.3) + roteiros + HTML da jornada da Renata (10→13 de 23)</li>
-      <li>Nomes validados com a LIA · arco descobrir → proteger → consolidar · as regras do jeito de ensinar sobem pro <strong>cérebro</strong> (não pro Mapa)</li>
-      <li>Arquitetura em 3 camadas travada (cérebro · regras · molde) · glossário afetivo↔técnico vira entregável do curso</li>
-      <li>Documento vivo da Billy = <strong>Google Doc ou Word</strong> (revoga o .txt como lar) · Notion fica fora do P1 (vira automação do P2)</li>
-      <li>HTML do M3 com botão de copiar nas falas genéricas · "cara" → "personalização" em todo o material</li>
-    </ul>
-  </div>
+  <div class="recent" id="recente"></div>
 
-  <!-- CONSTRUÇÃO DAS AULAS -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Construção das Aulas</div>
       <div class="section-sub">23 aulas · ~6h de vídeo</div>
     </div>
-    <div class="module-grid">
-      <!-- Convenção (Steph, 10/06): pendentes no topo; concluídos abaixo,
-           do mais recente pro mais antigo — mesma lógica do Histórico. -->
-
-      <div class="mod-card mod-span-full">
-        <div class="mod-head">
-          <div>
-            <div class="mod-name">Módulos 4–6 + Final · 10 aulas</div>
-            <div class="mod-meta">Estrutura macro confirmada · <span style="color:#5b21b6;font-weight:700">A granularizar</span></div>
-          </div>
-          <span class="pill p-macro">0 de 10 granularizadas</span>
-        </div>
-        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-zero" style="width:0%"></div></div></div>
-        <div>
-          <div class="aula-row climax-row"><span class="aula-code" style="min-width:3.5rem">Mod. 4</span><span class="aula-title"><strong>Construir o molde</strong></span><span class="aula-note">5 aulas · ⭐ CLÍMAX · próximo</span><span class="pill p-climax">Clímax</span></div>
-          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 5</span><span class="aula-title">Empacotamento + proofreader</span><span class="aula-note">2 aulas</span><span class="pill p-macro">Macro confirmado</span></div>
-          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Mod. 6</span><span class="aula-title">Multiplicar moldes (3 moldes ativos ao final)</span><span class="aula-note">2 aulas</span><span class="pill p-macro">Macro confirmado</span></div>
-          <div class="aula-row"><span class="aula-code" style="min-width:3.5rem">Final</span><span class="aula-title">Nova identidade</span><span class="aula-note">1 aula</span><span class="pill p-macro">Macro confirmado</span></div>
-        </div>
-      </div>
-
-      <div class="mod-card mod-span-full">
-        <div class="mod-head">
-          <div>
-            <div class="mod-name">Módulo 3 — O DNA da Sua Aula</div>
-            <div class="mod-meta">3 aulas · <span style="color:#059669;font-weight:700">Granularizado + roteiros + HTML + nomes validados LIA ✓</span></div>
-          </div>
-          <span class="pill p-done">✓ 3 de 3 — completo</span>
-        </div>
-        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-green" style="width:100%"></div></div></div>
-        <div>
-          <div class="aula-row"><span class="aula-code">3.1</span><span class="aula-title">O Que Você Faz Sem Perceber</span><span class="aula-note">regras de método</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">3.2</span><span class="aula-title">Aquilo Que Você Não Abre Mão</span><span class="aula-note">relação + limites</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">3.3</span><span class="aula-title">O Seu Jeito, Escrito</span><span class="aula-note">→ cérebro</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-        </div>
-      </div>
-
-      <div class="mod-card mod-span-full">
-        <div class="mod-head">
-          <div>
-            <div class="mod-name">Módulo 2 — A Arquitetura da Sua Aula</div>
-            <div class="mod-meta">5 aulas · <span style="color:#059669;font-weight:700">Granularizado + roteiros + nomes validados LIA ✓</span></div>
-          </div>
-          <span class="pill p-done">✓ 5 de 5 granularizadas</span>
-        </div>
-        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-green" style="width:100%"></div></div></div>
-        <div>
-          <div class="aula-row"><span class="aula-code">2.0</span><span class="aula-title">Comandar ou Conversar</span><span class="aula-note">a virada</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">2.1</span><span class="aula-title">As Partes da Sua Aula</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">2.2</span><span class="aula-title">Por Que Cada Parte Existe</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">2.3</span><span class="aula-title">Onde a Aula Acontece</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">2.4</span><span class="aula-title">A Personalidade da Sua Aula</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-        </div>
-      </div>
-
-      <div class="mod-card mod-span-full">
-        <div class="mod-head">
-          <div>
-            <div class="mod-name">Módulo 1 — Comece por Aqui: O Nascimento da Sua Fábrica</div>
-            <div class="mod-meta">5 aulas · ~75 min · <span style="color:#059669;font-weight:700">Nomenclatura validada com LIA ✓</span> <span style="color:#64748b;font-weight:600">(ex-Módulo 0)</span></div>
-          </div>
-          <span class="pill p-done">✓ 5 de 5 — completo</span>
-        </div>
-        <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill fill-green" style="width:100%"></div></div></div>
-        <div>
-          <div class="aula-row"><span class="aula-code">1.1</span><span class="aula-title">A Aula que Merece Virar Sistema</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">1.2</span><span class="aula-title">Seu Ambiente de Trabalho</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">1.3</span><span class="aula-title">Codificando Sua Identidade Pedagógica</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">1.4</span><span class="aula-title">O Cérebro da Sua Fábrica</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-          <div class="aula-row"><span class="aula-code">1.5</span><span class="aula-title">O Primeiro Molde da Sua Fábrica</span><span class="aula-note">⭐ Microvitória</span><span class="pill p-done">✓ Roteiro pronto</span></div>
-        </div>
-      </div>
-
-    </div>
+    <!-- Convenção (Steph, 10/06): pendentes no topo; concluídos abaixo,
+         do mais recente pro mais antigo — mesma lógica do Histórico. -->
+    <div class="module-grid" id="modulos"></div>
   </div>
 
-  <!-- MATERIAIS -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Materiais de Apoio</div>
-      <div class="section-sub">13 prontos · 5 pendentes</div>
+      <div class="section-sub" id="materiais-sub"></div>
     </div>
     <div class="mat-wrap">
       <table class="mat-table">
         <thead><tr><th>Status</th><th>Material</th><th>Aula</th><th>Observação</th></tr></thead>
-        <tbody>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Tabelinha Free vs Pro</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Criada em 26/05/2026</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Prompt síntese identidade pedagógica v3.1</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">Testado com Billy D e E</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>PDF Perguntas-Guia (áudio identidade)</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">7 perguntas · pendente hospedagem</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Pesquisa planos Claude atualizada</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Feita em 26/05/2026</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Texto-base das Instruções do projeto</td><td><span class="mat-aula-tag">0.4</span></td><td class="mat-obs">Criado 01/06 · guardrail de foco add 03/06</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Prompt de adaptação das Instruções</td><td><span class="mat-aula-tag">0.4</span></td><td class="mat-obs">Criado em 01/06/2026</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Ficha da aula assinatura (.txt)</td><td><span class="mat-aula-tag">0.5</span></td><td class="mat-obs">Criada 03/06 · 7 campos com exemplos</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Comando "Primeiro Esqueleto"</td><td><span class="mat-aula-tag">0.5</span></td><td class="mat-obs">Criado 03/06 · testado com Billy fictícia</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Prompt de transcrição de fotos</td><td><span class="mat-aula-tag">1.5</span></td><td class="mat-obs">Criado 03/06</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>Ficha "Mapa da Aula" (.txt)</td><td><span class="mat-aula-tag">Mód. 2</span></td><td class="mat-obs">ex-"Planta da Aula" · preenchida ao longo do Módulo 2</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>HTML + PDF — jornada da Renata (Módulo 1)</td><td><span class="mat-aula-tag">Mód. 1</span></td><td class="mat-obs">5 abas + aba Comandos · paleta versão A</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>HTML + PDF — jornada da Renata (Módulo 2)</td><td><span class="mat-aula-tag">Mód. 2</span></td><td class="mat-obs">5 abas (2.0–2.4) + Mapa da Aula integrado</td></tr>
-          <tr><td><span class="pill p-done">✓ Pronto</span></td><td>HTML — jornada da Renata (Módulo 3)</td><td><span class="mat-aula-tag">Mód. 3</span></td><td class="mat-obs">3 abas (3.1–3.3) + botão de copiar + bloco de recado</td></tr>
-          <tr><td><span class="pill p-miss">Pendente</span></td><td>Link tutorial externo — criação conta Google</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Confirmar antes de gravar</td></tr>
-          <tr><td><span class="pill p-miss">Pendente</span></td><td>Conta Claude nova (zerada) para gravação</td><td><span class="mat-aula-tag">0.2</span></td><td class="mat-obs">Email Google separado</td></tr>
-          <tr><td><span class="pill p-miss">Pendente</span></td><td>2ª Fábrica Steph (perfil de exemplo)</td><td><span class="mat-aula-tag">0.3</span></td><td class="mat-obs">Áudio já existe transcrito — usar o dela</td></tr>
-          <tr><td><span class="pill p-miss">Pendente</span></td><td>3 templates de skill (Molde Aberto, Fonte, Proofreader)</td><td><span class="mat-aula-tag">Mód. 4–5</span></td><td class="mat-obs">Faltam courage-to-be-disliked e proofreader no PC</td></tr>
-          <tr><td><span class="pill p-miss">Pendente</span></td><td>Google Form — registro de transformação</td><td><span class="mat-aula-tag">Final</span></td><td class="mat-obs">Criar antes do lançamento</td></tr>
-        </tbody>
+        <tbody id="materiais"></tbody>
       </table>
     </div>
   </div>
 
-  <!-- PENDÊNCIAS -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Pendências Pré-Gravação</div>
-      <div class="section-sub">8 itens</div>
+      <div class="section-sub" id="pend-sub"></div>
     </div>
-    <div class="pend-list">
-      <div class="pend-item p-crit"><div class="pend-num">1</div><div class="pend-body"><div class="pend-text"><strong>Granularizar Módulos 4–6 + Final</strong> — 10 aulas restantes (próximo: Módulo 4, o clímax)</div><div class="pend-sub">Desbloqueia → roteiros, validação LIA, gravação</div></div></div>
-      <div class="pend-item p-crit"><div class="pend-num">2</div><div class="pend-body"><div class="pend-text"><strong>Roteiros das 10 aulas dos Módulos 4–6 + Final</strong></div><div class="pend-sub">Desbloqueia → gravação</div></div></div>
-      <div class="pend-item p-crit"><div class="pend-num">3</div><div class="pend-body"><div class="pend-text"><strong>Validação LIA — nomenclaturas dos Módulos 4–6 + Final</strong></div><div class="pend-sub">Módulos 1, 2 e 3 já validados com a LIA</div></div></div>
-      <div class="pend-item p-high"><div class="pend-num">4</div><div class="pend-body"><div class="pend-text"><strong>Extrair 3 templates de skill</strong> (Molde Aberto, Molde-com-Fonte, Proofreader)</div><div class="pend-sub">Faltam no PC: courage-to-be-disliked + lesson-proofreader · esl-html-lesson ok</div></div></div>
-      <div class="pend-item p-norm"><div class="pend-num">5</div><div class="pend-body"><div class="pend-text"><strong>Conta Claude nova (zerada) para gravação</strong></div><div class="pend-sub">Email Google separado · criar perto da gravação</div></div></div>
-      <div class="pend-item p-norm"><div class="pend-num">6</div><div class="pend-body"><div class="pend-text"><strong>2ª Fábrica Steph (perfil de exemplo para 0.3)</strong></div><div class="pend-sub">Áudio próprio já transcrito — reutilizar</div></div></div>
-      <div class="pend-item p-norm"><div class="pend-num">7</div><div class="pend-body"><div class="pend-text"><strong>Decisão de plataforma</strong> + onde fica o material de apoio</div><div class="pend-sub">Decidir na sessão de 15/06</div></div></div>
-      <div class="pend-item p-norm"><div class="pend-num">8</div><div class="pend-body"><div class="pend-text"><strong>Comprar iluminação + microfone</strong> para a gravação</div><div class="pend-sub">Pesquisar — prazo 10/06 · teleprompter via app no tablet</div></div></div>
-    </div>
+    <div class="pend-list" id="pendencias"></div>
   </div>
 
-  <!-- PRÓXIMOS MARCOS -->
   <div class="section">
-    <div class="section-header"><div class="section-title">Próximos Marcos</div><div class="section-sub">rumo ao lançamento 29/06</div></div>
-    <div class="timeline">
-      <div class="tl-item"><div class="tl-dot dot-active">1</div><div class="tl-body"><div class="tl-title">Granularização — Módulos 4–6 + Final</div><div class="tl-desc">Módulos 1, 2 e 3 fechados (13/23). Próximo: Módulo 4 (o clímax). Validar nomes com a LIA em paralelo.</div></div></div>
-      <div class="tl-item"><div class="tl-dot dot-pend">2</div><div class="tl-body"><div class="tl-title">Gravação das 23 aulas + VSL</div><div class="tl-desc">15–21/06. Automação de edição construída em paralelo.</div></div></div>
-      <div class="tl-item"><div class="tl-dot dot-pend">3</div><div class="tl-body"><div class="tl-title">Página de vendas + Criativos</div><div class="tl-desc">21–26/06. Copy validada com a LIA · página via Claude Design → HTML.</div></div></div>
-      <div class="tl-item"><div class="tl-dot dot-pend">4</div><div class="tl-body"><div class="tl-title">Setup de tráfego + teste de funil</div><div class="tl-desc">27–28/06. Funil testado ponta a ponta.</div></div></div>
-      <div class="tl-item"><div class="tl-dot dot-pend">5</div><div class="tl-body"><div class="tl-title">Lançamento — coorte fundadora</div><div class="tl-desc">29/06 · Ticket R$97 · tráfego pago ativo.</div></div></div>
-    </div>
+    <div class="section-header"><div class="section-title">Próximos Marcos</div><div class="section-sub" id="marcos-sub"></div></div>
+    <div class="timeline" id="marcos"></div>
   </div>
 
-  <!-- HISTÓRICO DE PROGRESSO -->
   <div class="section">
     <div class="section-header">
       <div class="section-title">Histórico de Progresso</div>
       <div class="section-sub">o que andou a cada atualização</div>
     </div>
-    <div class="history">
-      <div class="hist-entry latest">
-        <div class="hist-date">08/06/2026 <span class="hist-tag">mais recente</span></div>
-        <ul class="hist-list">
-          <li>Módulo 3 "O DNA da Sua Aula" granularizado e fechado — 3 aulas (3.1–3.3) + roteiros + HTML da jornada da Renata (10→13 de 23)</li>
-          <li>Nomes validados com a LIA · arco descobrir → proteger → consolidar · as regras do jeito de ensinar sobem pro cérebro (não pro Mapa)</li>
-          <li>Arquitetura em 3 camadas travada (cérebro · regras · molde) · glossário afetivo↔técnico vira entregável do curso</li>
-          <li>Documento vivo da Billy = Google Doc ou Word (revoga .txt como lar) · Notion fora do P1 (vira automação do P2)</li>
-          <li>HTML do M3 com botão de copiar + bloco de recado · "cara" → "personalização" em todo o material</li>
-        </ul>
-      </div>
-      <div class="hist-entry">
-        <div class="hist-date">05/06/2026</div>
-        <ul class="hist-list">
-          <li>Módulos 1 e 2 — HTMLs da jornada + PDFs fechados e aprovados (cada aula em página nova)</li>
-          <li>Módulo 1: aba Comandos (4 comandos copiáveis) + fluxo Opção B (identidade nas Instruções na 1.3; cérebro substitui na 1.4) + ficha apresentada na 1.5</li>
-          <li>Paleta versão A (teal-base + lilás nos blocos de jornada) — decidida com pesquisa de psicologia das cores + PLD</li>
-          <li>Teste de QA com Billy fictícia (Juliana) percorrendo os 2 módulos · proofreading do Módulo 2 ("Planta"→"Mapa da Aula")</li>
-          <li>Roteiro da aula 2.0 ajustado (se o Claude já acertar, a professora assume o comando mesmo assim) · jornadas Steph/Juliana ficam como banco de teste sob demanda</li>
-        </ul>
-      </div>
-      <div class="hist-entry">
-        <div class="hist-date">04/06/2026</div>
-        <ul class="hist-list">
-          <li>Módulo 2 "A Arquitetura da Sua Aula" granularizado — 5 aulas (2.0–2.4), arquitetura + HTML da jornada da Renata (5→10 de 23)</li>
-          <li>Marca-mãe renomeada: Pedagogia → <strong>Ensino Amplificado</strong> / Amplified Teaching (validado LIA) · "Autoria Amplificada" fica no copy</li>
-          <li>Nomes do Módulo 2 fechados com a LIA · roteiros 2.0–2.4 prontos · ficha "Planta da Aula" criada · Módulo 2 salvo no Notion</li>
-          <li>Reestruturação: Módulo 0 → Módulo 1; o antigo "Nova relação com IA" virou a aula 2.0 (abertura do Módulo 2)</li>
-          <li>Convenção de design dos HTMLs de conversa criada (legenda · ação · pensamento · material de apoio · fade)</li>
-        </ul>
-      </div>
-      <div class="hist-entry">
-        <div class="hist-date">03/06/2026</div>
-        <ul class="hist-list">
-          <li>Aula 0.5 "O Primeiro Molde da Sua Fábrica" granularizada — Módulo 0 COMPLETO (4→5 de 5)</li>
-          <li>3 materiais criados: ficha (.txt), comando "Primeiro Esqueleto", prompt de transcrição</li>
-          <li>Aula 0.6 eliminada — anonimização migrou pro P2 (Módulo 0: 6→5 aulas; total 24→23)</li>
-          <li>Guardrail de foco aplicado no cérebro da 0.4 (Texto-base das Instruções)</li>
-          <li>Naming das alunas decidido: "Professora Amplificada" (validado com a LIA)</li>
-          <li>Comando da 0.5 testado com Billy fictícia (Renata) + ficha-exemplo da Steph preenchida</li>
-        </ul>
-      </div>
-      <div class="hist-entry">
-        <div class="hist-date">01/06/2026</div>
-        <ul class="hist-list">
-          <li>Aula 0.4 "O Cérebro da Sua Fábrica" granularizada (Módulo 0: 3→4 de 6)</li>
-          <li>2 materiais criados: texto-base das Instruções + prompt de adaptação</li>
-          <li>Pendência "mover chat entre projetos" resolvida</li>
-          <li>Protocolo de granularização definido (modo normal + fluxo fixo)</li>
-          <li>Cronograma completo de junho no Google Calendar, até o lançamento 29/06</li>
-        </ul>
-      </div>
-      <div class="hist-entry">
-        <div class="hist-date">31/05/2026</div>
-        <ul class="hist-list">
-          <li>Dashboard criado e publicado no GitHub Pages (link permanente)</li>
-          <li>Terminologia "Bloco" → "Módulo" em todo o material</li>
-          <li>Nome final "Fábrica de Aulas" confirmado</li>
-          <li>Consultoria jurídica saiu das pendências bloqueantes</li>
-        </ul>
-      </div>
-    </div>
+    <div class="history" id="historico"></div>
   </div>
 
 </div>
@@ -419,6 +231,97 @@ body{font-family:'Nunito',sans-serif;color:var(--ink);font-size:16px;line-height
   Fábrica de Aulas · Ensino Amplificado · Atualizado ao final de cada sessão · Fonte: Notion PLD
 </div>
 
+<script>
+// carrega os DADOS com ?v= pra furar o cache (sempre a versão atual do disco)
+document.write('<script src="dados-p1a.js?v=' + Date.now() + '"><\/script>');
+</script>
+<script>
+(function(){
+  const D = window.P1A;
+
+  // cabeçalho
+  document.getElementById("hdr-badge").textContent = "Atualizado em " + D.atualizado;
+  const pct = (D.progresso.n / D.progresso.de * 100);
+  const pctTxt = pct.toFixed(1).replace(".", ",").replace(",0", "");
+  document.getElementById("hdr-prog").innerHTML = `${D.progresso.n} / ${D.progresso.de} &nbsp;—&nbsp; ${pctTxt}%`;
+  document.getElementById("hdr-fill").style.width = pct.toFixed(1) + "%";
+
+  // KPIs
+  document.getElementById("kpis").innerHTML = D.kpis.map(k => `
+    <div class="kpi-card ${k.cor}">
+      <div class="kpi-num">${k.n}${k.de ? `<span class="kpi-denom">/${k.de}</span>` : ""}</div>
+      <div class="kpi-label">${k.label}</div>
+    </div>`).join("");
+
+  // atividade recente
+  document.getElementById("recente").innerHTML = `
+    <div class="recent-head">
+      <div class="recent-title">Atividade Recente</div>
+      <div class="recent-date">${D.recente.data}</div>
+    </div>
+    <ul class="recent-list">${D.recente.itens.map(i => `<li>${i}</li>`).join("")}</ul>`;
+
+  // módulos
+  document.getElementById("modulos").innerHTML = D.modulos.map(m => `
+    <div class="mod-card mod-span-full">
+      <div class="mod-head">
+        <div>
+          <div class="mod-name">${m.nome}</div>
+          <div class="mod-meta">${m.meta}</div>
+        </div>
+        <span class="pill ${m.pill.classe}">${m.pill.txt}</span>
+      </div>
+      <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill ${m.barra.classe}" style="width:${m.barra.pct}%"></div></div></div>
+      <div>${m.aulas.map(a => `
+        <div class="aula-row${a.climax ? " climax-row" : ""}${a.eliminada ? " elim" : ""}">
+          <span class="aula-code${a.codeLargo ? " largo" : ""}">${a.code}</span>
+          <span class="aula-title${a.eliminada ? " strike" : ""}">${a.titulo}</span>
+          ${a.nota ? `<span class="aula-note">${a.nota}</span>` : ""}
+          <span class="pill ${a.pill.classe}">${a.pill.txt}</span>
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+
+  // materiais
+  document.getElementById("materiais-sub").textContent = D.materiaisSub;
+  document.getElementById("materiais").innerHTML = D.materiais.map(m => `
+    <tr>
+      <td><span class="pill ${m.status === "done" ? "p-done" : "p-miss"}">${m.status === "done" ? "✓ Pronto" : "Pendente"}</span></td>
+      <td>${m.nome}</td>
+      <td><span class="mat-aula-tag">${m.aula}</span></td>
+      <td class="mat-obs">${m.obs}</td>
+    </tr>`).join("");
+
+  // pendências
+  document.getElementById("pend-sub").textContent = D.pendenciasSub;
+  document.getElementById("pendencias").innerHTML = D.pendencias.map((p, i) => `
+    <div class="pend-item p-${p.nivel}">
+      <div class="pend-num">${i + 1}</div>
+      <div class="pend-body">
+        <div class="pend-text">${p.texto}</div>
+        <div class="pend-sub">${p.sub}</div>
+      </div>
+    </div>`).join("");
+
+  // marcos
+  document.getElementById("marcos-sub").textContent = D.marcosSub;
+  document.getElementById("marcos").innerHTML = D.marcos.map((m, i) => `
+    <div class="tl-item">
+      <div class="tl-dot ${m.ativo ? "dot-active" : "dot-pend"}">${i + 1}</div>
+      <div class="tl-body">
+        <div class="tl-title">${m.titulo}</div>
+        <div class="tl-desc">${m.desc}</div>
+      </div>
+    </div>`).join("");
+
+  // histórico (acumulativo — entradas novas entram no topo de dados-p1a.js)
+  document.getElementById("historico").innerHTML = D.historico.map(h => `
+    <div class="hist-entry${h.latest ? " latest" : ""}">
+      <div class="hist-date">${h.data}${h.latest ? ' <span class="hist-tag">mais recente</span>' : ""}</div>
+      <ul class="hist-list">${h.itens.map(i => `<li>${i}</li>`).join("")}</ul>
+    </div>`).join("");
+})();
+</script>
 <script>
 document.querySelectorAll('.dtab').forEach(function(t){
   t.addEventListener('click',function(){
