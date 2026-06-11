@@ -9,34 +9,43 @@ window.P1A = {
   atualizado: "11/06/2026",
 
   kpis: [
-    { n: 18, de: 23, label: "Aulas granularizadas", cor: "c-green" },
-    { n: 18, de: 23, label: "Roteiros prontos", cor: "c-amber" },
-    { n: 17, de: 22, label: "Materiais prontos", cor: "c-amber" },
+    { n: 20, de: 23, label: "Aulas granularizadas", cor: "c-green" },
+    { n: 20, de: 23, label: "Roteiros prontos", cor: "c-amber" },
+    { n: 21, de: 26, label: "Materiais prontos", cor: "c-amber" },
     { n: 6, de: null, label: "Pendências pré-gravação", cor: "c-red" }
   ],
-  progresso: { n: 18, de: 23 },
+  progresso: { n: 20, de: 23 },
 
   recente: {
-    data: "10–11/06/2026",
+    data: "11/06/2026 (noite)",
     itens: [
-      '<strong>Módulo 4 — Quando Sua Fábrica Ganha Vida</strong> granularizado e fechado: 5 aulas (4.0–4.4) + roteiros + HTML da jornada + aba Comandos (13→18 de 23) · ⭐ é o CLÍMAX do curso',
-      'Nomes validados com a LIA · 4.1 "Por Dentro do Molde" · 4.3 "Até Soar Como Você" · frases-âncora do clímax incorporadas à 4.4',
-      '<strong>Comando de Início</strong> ("o botão de ligar a fábrica") criado e ensinado na 2.0 · chat novo permitido a qualquer momento (economia de tokens) · retrofit nos HTMLs M1–M3',
-      '<strong>Molde-exemplo da Steph</strong> (versão-curso) construído das 6 skills reais (via Eslá) + <strong>bastidores-P1</strong> (runbook de gravação clicável)',
-      'Numeração única de materiais/comandos decidida (1–12) · materiais da Billy vão pra plataforma do curso · pesquisa de mercado confirma o gap (ninguém codifica identidade)'
+      '<strong>Módulo 5 — O Que Faz Sua Fábrica Durar</strong> granularizado e fechado em 1 sessão, 1 dia adiantado: 5.1 "Seu Molde, Instalado" + 5.2 "Seu Padrão, Protegido" (18→20 de 23)',
+      'O molde vira <strong>skill instalada</strong> via skill-creator (verificado: funciona em todos os planos, inclusive Free) · revisor pessoal de 3 camadas · "a IA propõe, a professora decide" agora também na qualidade',
+      'Nomes validados com a LIA + auditoria · fechamento travado: "A primeira peça ajuda você a criar. A segunda ajuda você a continuar sendo você. Agora a sua fábrica pode ser rápida."',
+      'Comandos 13 (Empacotamento) · 14 (Revisor) · 15 (Última Leitura) — M5 já nasceu numerado · HTML da jornada da Renata completo',
+      '<strong>PDF Future Tenses</strong> criado (demo do molde com fonte ao vivo) · seção M5 no bastidores-P1 · restam M6 + aula final (3 aulas)'
     ]
   },
 
   modulos: [
     {
-      nome: "Módulos 5–6 + Final · 5 aulas",
+      nome: "Módulo 6 + Final · 3 aulas",
       meta: 'Estrutura macro confirmada · <span style="color:#5b21b6;font-weight:700">A granularizar</span>',
-      pill: { classe: "p-macro", txt: "0 de 5 granularizadas" },
+      pill: { classe: "p-macro", txt: "0 de 3 granularizadas" },
       barra: { classe: "fill-zero", pct: 0 },
       aulas: [
-        { code: "Mod. 5", codeLargo: true, titulo: "<strong>Empacotamento + proofreader</strong>", nota: "2 aulas · próximo · o molde vira skill", pill: { classe: "p-macro", txt: "Próximo" } },
-        { code: "Mod. 6", codeLargo: true, titulo: "Multiplicar moldes (3 moldes ativos ao final)", nota: "2 aulas · slides + biblioteca de efeitos aqui", pill: { classe: "p-macro", txt: "Macro confirmado" } },
+        { code: "Mod. 6", codeLargo: true, titulo: "<strong>Multiplicar moldes</strong> (3 moldes ativos ao final)", nota: "2 aulas · próximo (12/06) · slides + biblioteca de efeitos aqui", pill: { classe: "p-macro", txt: "Próximo" } },
         { code: "Final", codeLargo: true, titulo: "Nova identidade", nota: "1 aula", pill: { classe: "p-macro", txt: "Macro confirmado" } }
+      ]
+    },
+    {
+      nome: "Módulo 5 — O Que Faz Sua Fábrica Durar",
+      meta: '2 aulas · <span style="color:#059669;font-weight:700">Granularizado + roteiros + HTML + nomes validados LIA ✓</span>',
+      pill: { classe: "p-done", txt: "✓ 2 de 2 — completo" },
+      barra: { classe: "fill-green", pct: 100 },
+      aulas: [
+        { code: "5.1", titulo: "Seu Molde, Instalado", nota: "o molde vira skill instalada (skill-creator)", pill: { classe: "p-done", txt: "✓ Roteiro pronto" } },
+        { code: "5.2", titulo: "Seu Padrão, Protegido", nota: "o revisor pessoal · 3 camadas · ela decide", pill: { classe: "p-done", txt: "✓ Roteiro pronto" } }
       ]
     },
     {
@@ -91,7 +100,7 @@ window.P1A = {
     }
   ],
 
-  materiaisSub: "17 prontos · 5 pendentes",
+  materiaisSub: "21 prontos · 5 pendentes",
   materiais: [
     { status: "done", nome: "Tabelinha Free vs Pro", aula: "1.2", obs: "Criada em 26/05/2026" },
     { status: "done", nome: "1 · Comando da Identidade", aula: "1.3", obs: "Cola nas Instruções do projeto" },
@@ -107,7 +116,11 @@ window.P1A = {
     { status: "done", nome: "10 · Comando de Recomeço", aula: "4.2", obs: "É o Comando de Início preenchido pro molde" },
     { status: "done", nome: "11 · Checklist do Ensaio Geral", aula: "4.3", obs: "Ela roda sozinha · não vai pro Claude" },
     { status: "done", nome: "12 · Comando da Estreia", aula: "4.4", obs: "Gera a aula assinatura pela 1ª vez" },
-    { status: "done", nome: "HTMLs jornada da Renata — M1, M2, M3, M4", aula: "Mód. 1–4", obs: "Abas por aula + aba Comandos · Drive" },
+    { status: "done", nome: "13 · Comando de Empacotamento", aula: "5.1", obs: "Genérico — molde, revisor e moldes do M6 · skill-creator" },
+    { status: "done", nome: "14 · Comando do Revisor", aula: "5.2", obs: "Propõe a lista nas 3 camadas · ela corta/troca/completa" },
+    { status: "done", nome: "15 · Comando da Última Leitura", aula: "5.2", obs: '"Se algo parecer errado, não corrija: me pergunte primeiro"' },
+    { status: "done", nome: "PDF Future Tenses (demo molde com fonte)", aula: "5.1", obs: "Unit 7 · inglês europeu · a Steph anexa ao vivo" },
+    { status: "done", nome: "HTMLs jornada da Renata — M1 a M5", aula: "Mód. 1–5", obs: "Abas por aula + aba Comandos · Drive" },
     { status: "done", nome: "Molde-exemplo da Steph (versão-curso)", aula: "4.1", obs: "Das 6 skills reais · inglês irlandês · HTML com copiar" },
     { status: "done", nome: "Bastidores-P1 (runbook de gravação)", aula: "Todas", obs: "Tudo clicável · demo-ao-vivo × material" },
     { status: "miss", nome: "Versão Google Doc do molde-exemplo (pra tela)", aula: "4.1", obs: "Eu monto · você só abre" },
@@ -119,17 +132,17 @@ window.P1A = {
 
   pendenciasSub: "6 itens",
   pendencias: [
-    { nivel: "crit", texto: "<strong>Aplicar a numeração (1–12) em todos os HTMLs, scripts e bastidores</strong>", sub: "1ª tarefa da próxima sessão · M5/M6 já nascem numerados" },
-    { nivel: "crit", texto: "<strong>Granularizar Módulos 5–6 + Final</strong> — 5 aulas restantes (próximo: Módulo 5)", sub: "Desbloqueia → roteiros, validação LIA, gravação" },
-    { nivel: "crit", texto: "<strong>Validação LIA — nomes dos Módulos 5–6 + Final</strong>", sub: "Módulos 1–4 já validados com a LIA" },
-    { nivel: "high", texto: "<strong>Fábrica de exemplo da Steph</strong> (conta nova + áudio + cérebro + molde)", sub: "Sustenta as demos de tela de todo o curso · só a Steph pode fazer" },
+    { nivel: "crit", texto: "<strong>Granularizar Módulo 6 + aula final</strong> — 3 aulas restantes (M6 amanhã, 12/06)", sub: "Desbloqueia → roteiros, validação LIA, gravação" },
+    { nivel: "crit", texto: "<strong>Aplicar a numeração nos HTMLs M1–M4, scripts e bastidores</strong>", sub: "M5 já nasceu numerado (13/14/15) · retrofit pendente" },
+    { nivel: "crit", texto: "<strong>Validação LIA — nomes do Módulo 6 + Final</strong>", sub: "Módulos 1–5 já validados com a LIA" },
+    { nivel: "high", texto: "<strong>Fábrica de exemplo da Steph</strong> (conta nova + áudio + cérebro + molde)", sub: "Sustenta as demos de todo o curso · inclui rodar o fluxo de skill do M5 uma vez (prints da 5.1) · só a Steph pode fazer" },
     { nivel: "norm", texto: "<strong>Decisão de funil:</strong> coorte fundadora oferece certificado de horas?", sub: "Moeda do mercado BR · levar à LIA com a página de vendas" },
     { nivel: "norm", texto: "<strong>Comprar iluminação + microfone</strong> para a gravação", sub: "Pesquisar Hollyland Lark M2 · teleprompter via app no tablet" }
   ],
 
   marcosSub: "rumo ao lançamento",
   marcos: [
-    { ativo: true, titulo: "Granularização — Módulos 5–6 + Final", desc: "Módulos 1–4 fechados (18/23), incluindo o clímax. Restam M5, M6 e a aula final (5 aulas). Validar nomes com a LIA em paralelo." },
+    { ativo: true, titulo: "Granularização — Módulo 6 + Final", desc: "Módulos 1–5 fechados (20/23), incluindo o clímax e o epílogo. Restam M6 e a aula final (3 aulas). Validar nomes com a LIA em paralelo." },
     { ativo: false, titulo: "Gravação das 23 aulas + VSL", desc: "Automação de edição construída em paralelo · bastidores-P1 organiza o que mostrar em cada aula." },
     { ativo: false, titulo: "Página de vendas + Criativos", desc: "Copy validada com a LIA · página via Claude Design → HTML · pesquisa de mercado já aponta o posicionamento." },
     { ativo: false, titulo: "Setup de tráfego + teste de funil", desc: "Funil testado ponta a ponta." },
@@ -137,7 +150,14 @@ window.P1A = {
   ],
 
   historico: [
-    { data: "10–11/06/2026", latest: true, itens: [
+    { data: "11/06/2026 (noite)", latest: true, itens: [
+      'Módulo 5 "O Que Faz Sua Fábrica Durar" granularizado e fechado em 1 sessão — 1 dia adiantado vs. cronograma (18→20 de 23)',
+      '5.1 "Seu Molde, Instalado": o molde empacotado pelo skill-creator e instalado como skill na conta da Billy · skills funcionam em todos os planos, inclusive Free (verificado)',
+      '5.2 "Seu Padrão, Protegido": o revisor pessoal de 3 camadas · propõe e pergunta, nunca corrige por cima · "a IA propõe, a professora decide" na qualidade',
+      'Comandos 13/14/15 criados (M5 nasceu numerado) · PDF Future Tenses pra demo do molde com fonte · seção M5 no bastidores-P1',
+      'Fechamento travado: "A primeira peça ajuda você a criar. A segunda ajuda você a continuar sendo você. Agora a sua fábrica pode ser rápida."'
+    ]},
+    { data: "10–11/06/2026", itens: [
       'Módulo 4 "Quando Sua Fábrica Ganha Vida" granularizado e fechado — 5 aulas (4.0–4.4) + roteiros + HTML + aba Comandos (13→18 de 23) · ⭐ o CLÍMAX do curso',
       'Nomes validados com a LIA · 4.1 "Por Dentro do Molde" · 4.3 "Até Soar Como Você" · frases-âncora do clímax na 4.4 ("você se reconhece nela?")',
       'Comando de Início ("botão de ligar a fábrica") criado e ensinado na 2.0 · chat novo permitido (economia de tokens) · retrofit nos HTMLs M1–M3',
