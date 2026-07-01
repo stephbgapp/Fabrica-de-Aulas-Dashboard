@@ -5,40 +5,41 @@
 // Convenção: módulos do mais recente pro mais antigo (M5 → M1).
 // ============================================================
 window.P1A = {
-  atualizado: "24/06/2026",
+  atualizado: "30/06/2026",
 
   kpis: [
     { n: 20, de: 20, label: "Aulas gravadas", cor: "c-green" },
     { n: 21, de: 21, label: "Transcrições", cor: "c-green" },
     { n: 5, de: 5, label: "Módulos reconstruídos (M6 aposentado)", cor: "c-green" },
-    { n: 1, de: null, label: "Próximo: edição dos vídeos", cor: "c-amber" }
+    { n: 1, de: null, label: "Próximo: landing page (vídeos editados ✓)", cor: "c-amber" }
   ],
   progresso: { n: 20, de: 20 },
 
   recente: {
-    data: "24/06/2026 (reconstrução pós-gravação)",
+    data: "30/06/2026 (M4/M5 finalizados + vídeos editados)",
     itens: [
-      '<strong>🎬 CURSO GRAVADO → HTMLs RECONSTRUÍDOS.</strong> Depois da gravação a estrutura mudou: M4 virou <strong>6 aulas</strong> (família de skills + revisores), M5 virou a <strong>Aula Final</strong> (uma aula), e o <strong>M6 deixou de existir</strong> (o fechamento foi pra Aula Final).',
-      '<strong>Novo formato "demonstração ao vivo" no M4 e M5</strong> (1ª pessoa, a Steph construindo na hora; M1–M3 mantêm a Renata). Botões de copiar nos comandos reutilizáveis.',
-      '<strong>Comando de Início → Comando de Passagem</strong> (gera um MD pra continuar num chat novo) em M1–M3 + glossário.',
-      '<strong>Nomenclatura final fechada (M1–M5)</strong> — sem a LIA, a Steph aprovou tudo. 5 skills nomeadas; "FA Aula Rápida Sem Material" é uma skill só.',
-      'Bibliotecas de apoio ligadas (Efeitos no M5, Design no M2) · análise de discurso + doc de "ouro" (posicionamento/copy/conteúdo) criados.'
+      '<strong>✅ M4 e M5 (HTMLs) fechados.</strong> Todos em <strong>1ª pessoa</strong>, chats reetiquetados <strong>"Steph → Fábrica"</strong> (a Billy não confunde o exemplo com o próprio script), comandos com ícone <strong>⧉</strong> e <strong>[placeholders]</strong> nos que têm inglês específico; botão removido nas ilustrações puras.',
+      '<strong>M5 — Biblioteca de Efeitos virou aba interna</strong> (iframe) da Aula Final · bullet do Telegram reescrito (a Steph fala com a <strong>Letícia</strong>) · novo fecho + assinatura.',
+      '<strong>4.4 §2 reescrita</strong> ("A sua formação vira técnica"): a formação já está no cérebro — o ponto é trazer o método específico em detalhe na criação do skill.',
+      '<strong>🎬 Aula bônus do M5 gravada + editada</strong> ("A Fábrica na Vida Real" — teste de tempo). Decisão: <strong>bônus interno, fora do funil</strong> (velocidade é consequência, não a oferta). Transcrita + destilada na Base de Conhecimento.',
+      '<strong>Vídeos editados ✓</strong> · cronograma +1 dia → landing page começa 01/07, <strong>lançamento 10/07</strong>.'
     ]
   },
 
   modulos: [
     {
       nome: "Módulo 5 — Aula Final 🎓",
-      meta: '1 aula · <span style="color:#059669;font-weight:700">Gravada + HTML reconstruído ✓</span>',
-      pill: { classe: "p-done", txt: "✓ 1 de 1 — completa" },
+      meta: '1 aula final + 1 bônus · <span style="color:#059669;font-weight:700">Gravadas + HTML finalizado ✓</span>',
+      pill: { classe: "p-done", txt: "✓ completo" },
       barra: { classe: "fill-green", pct: 100 },
       aulas: [
-        { code: "5.0", codeLargo: true, titulo: "Agora o Céu é o Limite", nota: "imaginação + jogo da memória ao vivo + Biblioteca de Efeitos + convite ao Ensino Amplificado + história da ESLA", pill: { classe: "p-done", txt: "✓ HTML pronto" } }
+        { code: "Bônus", codeLargo: true, titulo: "A Fábrica na Vida Real (teste de tempo)", nota: "vídeo bônus (sem HTML) · demonstração ao vivo · ~5 aulas em ~35 min · bônus interno, fora do funil", pill: { classe: "p-done", txt: "✓ Editado" } },
+        { code: "5.0", codeLargo: true, titulo: "Agora o Céu é o Limite", nota: "imaginação + jogo da memória ao vivo + Biblioteca de Efeitos (aba interna) + Telegram/Letícia + convite ao Ensino Amplificado + história da ESLA", pill: { classe: "p-done", txt: "✓ HTML pronto" } }
       ]
     },
     {
       nome: "Módulo 4 — Sua Fábrica Ganha Repertório ⭐",
-      meta: '6 aulas · ⭐ o coração da virada · <span style="color:#059669;font-weight:700">Gravado + HTMLs reconstruídos ✓</span>',
+      meta: '6 aulas · ⭐ o coração da virada · <span style="color:#059669;font-weight:700">Gravado + HTMLs finalizados ✓</span>',
       pill: { classe: "p-done", txt: "✓ 6 de 6 — completo" },
       barra: { classe: "fill-green", pct: 100 },
       aulas: [
@@ -108,10 +109,10 @@ window.P1A = {
 
   pendenciasSub: "rumo ao lançamento",
   pendencias: [
-    { nivel: "high", texto: "<strong>Edição dos vídeos</strong> (Steph, no CapCut, à mão)", sub: "Letícia aprende o padrão de corte (diff editado × original) pra montar o auto-editor do P2" },
-    { nivel: "norm", texto: "<strong>Página de vendas</strong> + criativos", sub: "copy via LIA · protótipo no Claude Design → HTML" },
-    { nivel: "norm", texto: "<strong>Links pendentes</strong>: próxima turma (M5) + revisão final dos HTMLs pela Steph durante a edição", sub: "não travam a edição" },
-    { nivel: "low", texto: "<strong>Ideia (infra/DG-Alive): agente \"Toby\"</strong> — documentação automática do sistema", sub: "revisitar depois dos vídeos · fonte: newsletter Allie K. Miller" }
+    { nivel: "high", texto: "<strong>Landing page</strong> + criativos", sub: "começa 01/07 · copy via LIA · protótipo no Claude Design → HTML · base no estudo da Julia" },
+    { nivel: "norm", texto: "<strong>Revogar o PAT do GitHub</strong> (closeout de segurança)", sub: "~2 min · a Steph revoga em github.com/settings/tokens e gera um novo escopo mínimo" },
+    { nivel: "norm", texto: "<strong>Link da próxima turma</strong> (CTA do M5)", sub: "não trava · placeholder já removido do HTML" },
+    { nivel: "low", texto: "<strong>Polimento fino dos HTMLs</strong>: conferir a posição da caixa §2 na 4.4 + a aba Biblioteca do M5", sub: "cosmético, 2 seg, não trava" }
   ],
 
   marcosSub: "rumo ao lançamento",
@@ -119,13 +120,18 @@ window.P1A = {
     { ativo: false, titulo: "Granularização + Teleprompters — COMPLETO 🎓", desc: "23/23 + teleprompters (jun/2026)." },
     { ativo: false, titulo: "Gravação das aulas — COMPLETO 🎬", desc: "Curso gravado · estrutura ajustada na gravação (M4=6, M5=Aula Final, M6 extinto)." },
     { ativo: false, titulo: "HTMLs reconstruídos — COMPLETO ✓", desc: "M4/M5 no formato demonstração ao vivo · M1–M3 com Comando de Passagem · nomenclatura e skills finais." },
-    { ativo: true, titulo: "Edição dos vídeos", desc: "Steph edita no CapCut (à mão). Letícia aprende o padrão pro auto-editor do P2." },
-    { ativo: false, titulo: "Página de vendas + Criativos", desc: "Copy via LIA · página via Claude Design → HTML." },
+    { ativo: false, titulo: "Edição dos vídeos — COMPLETO 🎬", desc: "Vídeos editados (30/06) · aula bônus incluída. Letícia aprende o padrão pro auto-editor do P2." },
+    { ativo: true, titulo: "Landing page + Criativos", desc: "Começa 01/07 · copy via LIA · página via Claude Design → HTML. Lançamento 10/07." },
     { ativo: false, titulo: "Lançamento — coorte fundadora", desc: "Ticket R$97 · tráfego pago." }
   ],
 
   historico: [
-    { data: "24/06/2026 (reconstrução pós-gravação)", latest: true, itens: [
+    { data: "30/06/2026 (M4/M5 finalizados + vídeos editados)", latest: true, itens: [
+      '✅ <strong>M4 + M5 (HTMLs) fechados</strong>: 1ª pessoa · chats "Steph → Fábrica" · ⧉ + [placeholders] nos comandos · botão removido nas ilustrações puras · 4.4 §2 reescrita · slides opção B.',
+      '🎬 <strong>M5 — Biblioteca de Efeitos virou aba interna</strong> · Telegram/Letícia no fecho · aula bônus "A Fábrica na Vida Real" gravada, editada, transcrita e destilada (bônus interno, fora do funil).',
+      '📅 Vídeos editados · cronograma +1 dia → <strong>lançamento 10/07</strong> · landing page começa 01/07.'
+    ]},
+    { data: "24/06/2026 (reconstrução pós-gravação)", itens: [
       '🎬 <strong>Curso gravado → HTMLs reconstruídos.</strong> M4 = 6 aulas (família de skills + revisores), M5 = Aula Final, <strong>M6 extinto</strong> (antigos em _retirado).',
       '<strong>Formato "demonstração ao vivo"</strong> no M4/M5 (1ª pessoa, Steph ao vivo) · M1–M3 mantêm a Renata · botões de copiar nos comandos reutilizáveis.',
       '<strong>Comando de Início → Comando de Passagem</strong> (MD de handoff) em M1–M3 + glossário.',
