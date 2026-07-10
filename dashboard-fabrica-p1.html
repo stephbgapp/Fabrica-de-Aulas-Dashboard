@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Fábrica de Aulas P1</title>
+<link rel="stylesheet" href="fontes.css">
+<style>
+/* Design: linguagem do painel do Ecossistema (Paleta 2026) com títulos em
+   Manrope bold — mais firme, menos arredondado que a Fredoka.
+   Este arquivo é SÓ design + renderização: o conteúdo vive em dados-p1a.js.
+   Regenerar o dashboard = editar dados-p1a.js (decisão UX 10/06/2026). */
+:root{
+  --ivory:#FAF6EF; --sand:#E7D8C3; --sand-deep:#D8C3A6;
+  --sage:#A9C0A4; --dusty:#A9C3D6; --lav:#CABFDB;
+  --peach:#F0C6AC; --blush:#E4BEBD; --clay:#D6A88F; --butter:#EBD9A0;
+  --ink:#5C5048; --ink-soft:#9c8d80; --line:#ECE3D6; --line-soft:#f6f0e6;
+  --shadow:0 18px 38px -22px rgba(120,100,80,.45);
+  --shadow-sm:0 8px 20px -14px rgba(120,100,80,.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;color:var(--ink);font-size:16px;line-height:1.5;min-height:100vh;
+  background:radial-gradient(1200px 700px at 50% -10%, #fff 0%, var(--ivory) 55%, #f3ebdf 100%), var(--ivory);
+  background-attachment:fixed}
+.fred,.header-title,.section-title,.mod-name,.kpi-num,.tl-title,.hist-date,.dtab,.pend-num{font-family:'Manrope',sans-serif}
+
+.header{max-width:1180px;margin:0 auto;padding:2rem 1.5rem 0.5rem;color:var(--ink)}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem}
+.header-brand{font-size:0.6875rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:0.25rem}
+.header-title{font-size:1.7rem;font-weight:800;letter-spacing:-0.01em}
+.header-subtitle{font-size:0.9rem;color:var(--ink-soft);margin-top:0.25rem}
+.header-badge{font-size:0.6875rem;font-weight:800;background:#fff;border:1px solid var(--line);color:var(--ink-soft);padding:0.375rem 0.875rem;border-radius:999px;white-space:nowrap;align-self:flex-start;margin-top:0.25rem;box-shadow:var(--shadow-sm)}
+.progress-label{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--ink-soft);margin-bottom:0.5rem}
+.progress-label strong{font-size:0.9375rem;color:var(--ink)}
+.progress-track{background:#fff;border:1px solid var(--line);border-radius:999px;height:12px;overflow:hidden}
+.progress-fill{height:100%;border-radius:999px;background:linear-gradient(to right,var(--sage),#8aa884);transition:width 0.6s ease}
+.recent{background:#fff;border:1px solid var(--line);border-left:6px solid var(--sage);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2.25rem;box-shadow:var(--shadow)}
+.recent-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem}
+.recent-title{font-family:'Manrope',sans-serif;font-size:0.9375rem;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:0.5rem}
+.recent-date{font-size:0.75rem;font-weight:800;color:var(--ink);background:var(--sand);padding:0.2rem 0.7rem;border-radius:999px}
+.recent-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.recent-list li{font-size:0.875rem;color:var(--ink);padding-left:1.25rem;position:relative}
+.recent-list li::before{content:"✓";position:absolute;left:0;color:#7d9a77;font-weight:800}
+
+.main{max-width:1180px;margin:0 auto;padding:1.5rem 1.5rem 2rem}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2.25rem}
+.kpi-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.25rem 1rem;text-align:center;box-shadow:var(--shadow-sm)}
+.kpi-num{font-size:2.25rem;font-weight:800;line-height:1;letter-spacing:-0.02em}
+.kpi-denom{font-size:1rem;font-weight:600;color:var(--ink-soft);letter-spacing:0}
+.kpi-label{font-size:0.6875rem;color:var(--ink-soft);margin-top:0.375rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em}
+.kpi-card.c-green .kpi-num{color:#6f8f68}
+.kpi-card.c-amber .kpi-num{color:#a8843c}
+.kpi-card.c-red .kpi-num{color:#b06262}
+
+.section{margin-bottom:2.5rem}
+.section-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.625rem;border-bottom:2px solid var(--line)}
+.section-title{font-size:1.0625rem;font-weight:800;color:var(--ink);letter-spacing:-0.01em}
+.section-sub{font-size:0.8125rem;color:var(--ink-soft);font-weight:600}
+
+.module-grid{display:grid;gap:1rem}
+.mod-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.mod-head{padding:1rem 1.25rem 0.75rem;display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;flex-wrap:wrap;border-bottom:1px solid var(--line-soft)}
+.mod-name{font-weight:800;font-size:0.9375rem;color:var(--ink);line-height:1.3}
+.mod-meta{font-size:0.75rem;color:var(--ink-soft);margin-top:0.2rem}
+.mod-bar-wrap{padding:0.625rem 1.25rem 0}
+.mod-bar-track{background:#f3ebdf;border-radius:999px;height:6px}
+.mod-bar-fill{height:6px;border-radius:999px}
+.fill-green{background:linear-gradient(90deg,var(--sage),#8aa884)}
+.fill-amber{background:linear-gradient(90deg,var(--butter),#d9c47e)}
+.fill-zero{background:#e9e0d2}
+.aula-row{display:flex;align-items:center;gap:0.75rem;padding:0.625rem 1.25rem;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.aula-row:last-child{border-bottom:none}
+.aula-row.climax-row{background:#fdf3ec}
+.aula-row.elim{opacity:0.55}
+.aula-code{font-size:0.75rem;font-weight:800;color:var(--ink-soft);min-width:2.75rem;flex-shrink:0}
+.aula-code.largo{min-width:3.5rem}
+.aula-title{font-size:0.875rem;color:#4a4039;flex:1;min-width:140px}
+.aula-title.strike{text-decoration:line-through;color:var(--ink-soft)}
+.aula-note{font-size:0.6875rem;color:var(--clay);font-weight:700}
+
+.pill{display:inline-flex;align-items:center;gap:0.2rem;font-size:0.6875rem;font-weight:800;padding:0.2rem 0.65rem;border-radius:999px;white-space:nowrap;flex-shrink:0}
+.p-done{background:var(--sage);color:#2c3a28}
+.p-wait{background:var(--butter);color:#6b5a1f}
+.p-miss{background:var(--blush);color:#6e2f2f}
+.p-macro{background:var(--lav);color:#473a5c}
+.p-climax{background:var(--peach);color:#6b4329}
+.p-lia{background:var(--dusty);color:#2f3e4a}
+.p-elim{background:#f3ebdf;color:var(--ink-soft)}
+
+.mat-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mat-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.mat-table th{background:var(--sand);font-size:0.6875rem;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:0.06em;padding:0.75rem 1rem;text-align:left;font-family:'Manrope',sans-serif}
+.mat-table td{padding:0.75rem 1rem;font-size:0.875rem;border-top:1px solid #f3ebdf;vertical-align:middle}
+.mat-aula-tag{font-size:0.6875rem;color:var(--ink-soft);background:#f3ebdf;padding:0.125rem 0.5rem;border-radius:6px;font-weight:700}
+.mat-obs{font-size:0.75rem;color:var(--ink-soft);font-style:italic}
+
+.pend-list{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.pend-item{display:flex;align-items:flex-start;gap:1rem;padding:0.875rem 1.25rem;border-bottom:1px solid var(--line-soft)}
+.pend-item:last-child{border-bottom:none}
+.pend-item.p-crit{border-left:4px solid #c98a88}
+.pend-item.p-high{border-left:4px solid var(--clay)}
+.pend-item.p-norm{border-left:4px solid var(--line)}
+.pend-num{font-size:0.75rem;font-weight:800;color:var(--ink);min-width:1.5rem;padding-top:0.125rem}
+.pend-body{flex:1}
+.pend-text{font-size:0.875rem;color:var(--ink)}
+.pend-sub{font-size:0.75rem;color:var(--ink-soft);margin-top:0.2rem}
+
+.timeline{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.tl-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--line-soft)}
+.tl-item:last-child{border-bottom:none}
+.tl-dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:800;flex-shrink:0;font-family:'Manrope',sans-serif}
+.dot-active{background:var(--dusty);color:#2f3e4a;border:2px solid #8fb0c8}
+.dot-pend{background:#f3ebdf;color:var(--ink-soft);border:2px solid var(--line)}
+.tl-body{flex:1}
+.tl-title{font-weight:800;font-size:0.9375rem;color:var(--ink)}
+.tl-desc{font-size:0.8125rem;color:var(--ink-soft);margin-top:0.2rem}
+
+.history{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.hist-entry{padding:1rem 1.25rem;border-bottom:1px solid var(--line-soft)}
+.hist-entry:last-child{border-bottom:none}
+.hist-entry.latest{background:#f4f8f2}
+.hist-date{font-size:0.8125rem;font-weight:800;color:var(--ink);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem}
+.hist-date::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sage);flex-shrink:0}
+.hist-tag{font-size:0.625rem;font-weight:800;color:#2c3a28;background:var(--sage);padding:0.1rem 0.55rem;border-radius:999px;text-transform:uppercase;letter-spacing:0.04em}
+.hist-list{list-style:none;display:flex;flex-direction:column;gap:0.375rem}
+.hist-list li{font-size:0.8125rem;color:#4a4039;padding-left:1.25rem;position:relative}
+.hist-list li::before{content:"✓";position:absolute;left:0;color:#7d9a77;font-weight:800}
+
+.footer{text-align:center;padding:1.5rem 1rem 2.5rem;font-size:0.75rem;color:var(--ink-soft)}
+
+.dash-tabs{display:flex;gap:.5rem;justify-content:center;padding:.4rem 1rem 1rem;flex-wrap:wrap;position:sticky;top:0;z-index:20;
+  background:linear-gradient(var(--ivory),var(--ivory) 70%,rgba(250,246,239,0))}
+.dtab{background:#fff;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:.5rem 1.2rem;font-size:.88rem;font-weight:800;cursor:pointer;box-shadow:var(--shadow-sm);transition:.15s}
+.dtab:hover{color:var(--ink);transform:translateY(-1px)}
+.dtab.active{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.view{display:none}
+.view.active{display:block}
+
+@media(min-width:900px){.module-grid{grid-template-columns:repeat(2,1fr)}.mod-span-full{grid-column:1/-1}}
+@media(max-width:600px){
+  .header{padding:1.25rem 1rem 0.5rem}.header-title{font-size:1.25rem}
+  .main{padding:1.25rem 1rem}.kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .kpi-num{font-size:1.75rem}.aula-title{font-size:0.8125rem}
+  .mat-table th,.mat-table td{padding:0.625rem 0.75rem;font-size:0.8125rem}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-brand">Ensino Amplificado · P1</div>
+      <div class="header-title">Fábrica de Aulas</div>
+      <div class="header-subtitle">Dashboard de construção do produto</div>
+    </div>
+    <div class="header-badge" id="hdr-badge"></div>
+  </div>
+  <div>
+    <div class="progress-label">
+      <span>Aulas granularizadas</span>
+      <strong id="hdr-prog"></strong>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="hdr-fill"></div></div>
+  </div>
+</div>
+
+<div class="dash-tabs">
+  <button class="dtab active" data-view="progresso">Progresso</button>
+  <button class="dtab" data-view="trilha">Trilha da Billy</button>
+</div>
+
+<div class="main view active" id="view-progresso">
+
+  <div class="kpi-grid" id="kpis"></div>
+
+  <div class="recent" id="recente"></div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Construção das Aulas</div>
+      <div class="section-sub">23 aulas · ~6h de vídeo</div>
+    </div>
+    <!-- Convenção (Steph, 10/06): pendentes no topo; concluídos abaixo,
+         do mais recente pro mais antigo — mesma lógica do Histórico. -->
+    <div class="module-grid" id="modulos"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Materiais de Apoio</div>
+      <div class="section-sub" id="materiais-sub"></div>
+    </div>
+    <div class="mat-wrap">
+      <table class="mat-table">
+        <thead><tr><th>Status</th><th>Material</th><th>Aula</th><th>Observação</th></tr></thead>
+        <tbody id="materiais"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Pendências Pré-Gravação</div>
+      <div class="section-sub" id="pend-sub"></div>
+    </div>
+    <div class="pend-list" id="pendencias"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-title">Próximos Marcos</div><div class="section-sub" id="marcos-sub"></div></div>
+    <div class="timeline" id="marcos"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">Histórico de Progresso</div>
+      <div class="section-sub">o que andou a cada atualização</div>
+    </div>
+    <div class="history" id="historico"></div>
+  </div>
+
+</div>
+
+<div class="view" id="view-trilha">
+  <iframe src="jornada-billy.html?v=20260610" title="Trilha da Billy — Fábrica de Aulas" style="width:100%;height:1150px;border:none;display:block"></iframe>
+</div>
+
+<div class="footer">
+  Fábrica de Aulas · Ensino Amplificado · Atualizado ao final de cada sessão · Fonte: Notion PLD
+</div>
+
+<script>
+// carrega os DADOS com ?v= pra furar o cache (sempre a versão atual do disco)
+document.write('<script src="dados-p1a.js?v=' + Date.now() + '"><\/script>');
+</script>
+<script>
+(function(){
+  const D = window.P1A;
+
+  // cabeçalho
+  document.getElementById("hdr-badge").textContent = "Atualizado em " + D.atualizado;
+  const pct = (D.progresso.n / D.progresso.de * 100);
+  const pctTxt = pct.toFixed(1).replace(".", ",").replace(",0", "");
+  document.getElementById("hdr-prog").innerHTML = `${D.progresso.n} / ${D.progresso.de} &nbsp;—&nbsp; ${pctTxt}%`;
+  document.getElementById("hdr-fill").style.width = pct.toFixed(1) + "%";
+
+  // KPIs
+  document.getElementById("kpis").innerHTML = D.kpis.map(k => `
+    <div class="kpi-card ${k.cor}">
+      <div class="kpi-num">${k.n}${k.de ? `<span class="kpi-denom">/${k.de}</span>` : ""}</div>
+      <div class="kpi-label">${k.label}</div>
+    </div>`).join("");
+
+  // atividade recente
+  document.getElementById("recente").innerHTML = `
+    <div class="recent-head">
+      <div class="recent-title">Atividade Recente</div>
+      <div class="recent-date">${D.recente.data}</div>
+    </div>
+    <ul class="recent-list">${D.recente.itens.map(i => `<li>${i}</li>`).join("")}</ul>`;
+
+  // módulos
+  document.getElementById("modulos").innerHTML = D.modulos.map(m => `
+    <div class="mod-card mod-span-full">
+      <div class="mod-head">
+        <div>
+          <div class="mod-name">${m.nome}</div>
+          <div class="mod-meta">${m.meta}</div>
+        </div>
+        <span class="pill ${m.pill.classe}">${m.pill.txt}</span>
+      </div>
+      <div class="mod-bar-wrap"><div class="mod-bar-track"><div class="mod-bar-fill ${m.barra.classe}" style="width:${m.barra.pct}%"></div></div></div>
+      <div>${m.aulas.map(a => `
+        <div class="aula-row${a.climax ? " climax-row" : ""}${a.eliminada ? " elim" : ""}">
+          <span class="aula-code${a.codeLargo ? " largo" : ""}">${a.code}</span>
+          <span class="aula-title${a.eliminada ? " strike" : ""}">${a.titulo}</span>
+          ${a.nota ? `<span class="aula-note">${a.nota}</span>` : ""}
+          <span class="pill ${a.pill.classe}">${a.pill.txt}</span>
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+
+  // materiais
+  document.getElementById("materiais-sub").textContent = D.materiaisSub;
+  document.getElementById("materiais").innerHTML = D.materiais.map(m => `
+    <tr>
+      <td><span class="pill ${m.status === "done" ? "p-done" : "p-miss"}">${m.status === "done" ? "✓ Pronto" : "Pendente"}</span></td>
+      <td>${m.nome}</td>
+      <td><span class="mat-aula-tag">${m.aula}</span></td>
+      <td class="mat-obs">${m.obs}</td>
+    </tr>`).join("");
+
+  // pendências
+  document.getElementById("pend-sub").textContent = D.pendenciasSub;
+  document.getElementById("pendencias").innerHTML = D.pendencias.map((p, i) => `
+    <div class="pend-item p-${p.nivel}">
+      <div class="pend-num">${i + 1}</div>
+      <div class="pend-body">
+        <div class="pend-text">${p.texto}</div>
+        <div class="pend-sub">${p.sub}</div>
+      </div>
+    </div>`).join("");
+
+  // marcos
+  document.getElementById("marcos-sub").textContent = D.marcosSub;
+  document.getElementById("marcos").innerHTML = D.marcos.map((m, i) => `
+    <div class="tl-item">
+      <div class="tl-dot ${m.ativo ? "dot-active" : "dot-pend"}">${i + 1}</div>
+      <div class="tl-body">
+        <div class="tl-title">${m.titulo}</div>
+        <div class="tl-desc">${m.desc}</div>
+      </div>
+    </div>`).join("");
+
+  // histórico (acumulativo — entradas novas entram no topo de dados-p1a.js)
+  document.getElementById("historico").innerHTML = D.historico.map(h => `
+    <div class="hist-entry${h.latest ? " latest" : ""}">
+      <div class="hist-date">${h.data}${h.latest ? ' <span class="hist-tag">mais recente</span>' : ""}</div>
+      <ul class="hist-list">${h.itens.map(i => `<li>${i}</li>`).join("")}</ul>
+    </div>`).join("");
+})();
+</script>
+<script>
+document.querySelectorAll('.dtab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.dtab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.view').forEach(function(x){x.classList.remove('active')});
+    t.classList.add('active');
+    document.getElementById('view-'+t.dataset.view).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
